@@ -22,10 +22,12 @@ var _ MappedNullable = &CreateDataDestinationRequest{}
 type CreateDataDestinationRequest struct {
 	// The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication.
 	DestinationEndpoint string `json:"destinationEndpoint"`
+	// A description for identifying this DataDestination.
+	Description *string `json:"description,omitempty"`
 	// The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
-	FilterId string `json:"filterId"`
+	FilterIds []string `json:"filterIds"`
 	// A name for this DataDestination projection
-	ProjectionName string `json:"projectionName"`
+	DestinationName *string `json:"destinationName,omitempty"`
 	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
 	Password string `json:"password"`
 	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
@@ -36,11 +38,10 @@ type CreateDataDestinationRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDataDestinationRequest(destinationEndpoint string, filterId string, projectionName string, password string, username string) *CreateDataDestinationRequest {
+func NewCreateDataDestinationRequest(destinationEndpoint string, filterIds []string, password string, username string) *CreateDataDestinationRequest {
 	this := CreateDataDestinationRequest{}
 	this.DestinationEndpoint = destinationEndpoint
-	this.FilterId = filterId
-	this.ProjectionName = projectionName
+	this.FilterIds = filterIds
 	this.Password = password
 	this.Username = username
 	return &this
@@ -78,52 +79,92 @@ func (o *CreateDataDestinationRequest) SetDestinationEndpoint(v string) {
 	o.DestinationEndpoint = v
 }
 
-// GetFilterId returns the FilterId field value
-func (o *CreateDataDestinationRequest) GetFilterId() string {
-	if o == nil {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateDataDestinationRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.FilterId
+	return *o.Description
 }
 
-// GetFilterIdOk returns a tuple with the FilterId field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateDataDestinationRequest) GetFilterIdOk() (*string, bool) {
-	if o == nil {
+func (o *CreateDataDestinationRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.FilterId, true
+	return o.Description, true
 }
 
-// SetFilterId sets field value
-func (o *CreateDataDestinationRequest) SetFilterId(v string) {
-	o.FilterId = v
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateDataDestinationRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
 }
 
-// GetProjectionName returns the ProjectionName field value
-func (o *CreateDataDestinationRequest) GetProjectionName() string {
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateDataDestinationRequest) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetFilterIds returns the FilterIds field value
+func (o *CreateDataDestinationRequest) GetFilterIds() []string {
 	if o == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
 
-	return o.ProjectionName
+	return o.FilterIds
 }
 
-// GetProjectionNameOk returns a tuple with the ProjectionName field value
+// GetFilterIdsOk returns a tuple with the FilterIds field value
 // and a boolean to check if the value has been set.
-func (o *CreateDataDestinationRequest) GetProjectionNameOk() (*string, bool) {
+func (o *CreateDataDestinationRequest) GetFilterIdsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectionName, true
+	return o.FilterIds, true
 }
 
-// SetProjectionName sets field value
-func (o *CreateDataDestinationRequest) SetProjectionName(v string) {
-	o.ProjectionName = v
+// SetFilterIds sets field value
+func (o *CreateDataDestinationRequest) SetFilterIds(v []string) {
+	o.FilterIds = v
+}
+
+// GetDestinationName returns the DestinationName field value if set, zero value otherwise.
+func (o *CreateDataDestinationRequest) GetDestinationName() string {
+	if o == nil || IsNil(o.DestinationName) {
+		var ret string
+		return ret
+	}
+	return *o.DestinationName
+}
+
+// GetDestinationNameOk returns a tuple with the DestinationName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataDestinationRequest) GetDestinationNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DestinationName) {
+		return nil, false
+	}
+	return o.DestinationName, true
+}
+
+// HasDestinationName returns a boolean if a field has been set.
+func (o *CreateDataDestinationRequest) HasDestinationName() bool {
+	if o != nil && !IsNil(o.DestinationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationName gets a reference to the given string and assigns it to the DestinationName field.
+func (o *CreateDataDestinationRequest) SetDestinationName(v string) {
+	o.DestinationName = &v
 }
 
 // GetPassword returns the Password field value
@@ -185,8 +226,13 @@ func (o CreateDataDestinationRequest) MarshalJSON() ([]byte, error) {
 func (o CreateDataDestinationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["destinationEndpoint"] = o.DestinationEndpoint
-	toSerialize["filterId"] = o.FilterId
-	toSerialize["projectionName"] = o.ProjectionName
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["filterIds"] = o.FilterIds
+	if !IsNil(o.DestinationName) {
+		toSerialize["destinationName"] = o.DestinationName
+	}
 	toSerialize["password"] = o.Password
 	toSerialize["username"] = o.Username
 	return toSerialize, nil

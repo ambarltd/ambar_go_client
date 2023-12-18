@@ -132,6 +132,28 @@ func (a *AmbarAPIService) CreateDataDestinationExecute(r ApiCreateDataDestinatio
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v InvalidParameterException
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ResourceNotFoundException
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v AmbarServiceException
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -265,6 +287,17 @@ func (a *AmbarAPIService) CreateDataSourceExecute(r ApiCreateDataSourceRequest) 
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v InvalidParameterException
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v AmbarServiceException
@@ -1353,9 +1386,15 @@ func (a *AmbarAPIService) DescribeFilterExecute(r ApiDescribeFilterRequest) (*Fi
 type ApiListResourcesRequest struct {
 	ctx context.Context
 	ApiService *AmbarAPIService
+	listResourcesRequest *ListResourcesRequest
 }
 
-func (r ApiListResourcesRequest) Execute() ([]ResourceTypeDetails, *http.Response, error) {
+func (r ApiListResourcesRequest) ListResourcesRequest(listResourcesRequest ListResourcesRequest) ApiListResourcesRequest {
+	r.listResourcesRequest = &listResourcesRequest
+	return r
+}
+
+func (r ApiListResourcesRequest) Execute() (*ListResourcesResponse, *http.Response, error) {
 	return r.ApiService.ListResourcesExecute(r)
 }
 
@@ -1375,13 +1414,13 @@ func (a *AmbarAPIService) ListResources(ctx context.Context) ApiListResourcesReq
 }
 
 // Execute executes the request
-//  @return []ResourceTypeDetails
-func (a *AmbarAPIService) ListResourcesExecute(r ApiListResourcesRequest) ([]ResourceTypeDetails, *http.Response, error) {
+//  @return ListResourcesResponse
+func (a *AmbarAPIService) ListResourcesExecute(r ApiListResourcesRequest) (*ListResourcesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ResourceTypeDetails
+		localVarReturnValue  *ListResourcesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AmbarAPIService.ListResources")
@@ -1396,7 +1435,7 @@ func (a *AmbarAPIService) ListResourcesExecute(r ApiListResourcesRequest) ([]Res
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1412,6 +1451,8 @@ func (a *AmbarAPIService) ListResourcesExecute(r ApiListResourcesRequest) ([]Res
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.listResourcesRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1447,6 +1488,17 @@ func (a *AmbarAPIService) ListResourcesExecute(r ApiListResourcesRequest) ([]Res
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v InvalidParameterException
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v AmbarServiceException

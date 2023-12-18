@@ -20,10 +20,6 @@ var _ MappedNullable = &PostgresDataSource{}
 
 // PostgresDataSource struct for PostgresDataSource
 type PostgresDataSource struct {
-	// A case sensitive string for the user Ambar should use to connect to your Postgres database.
-	Username string `json:"username"`
-	// A case sensitive string for the user Ambar should use to connect to your Postgres database.
-	Password string `json:"password"`
 	// A case insensitive string for the host on which your Postgres database is running and which Ambar can use to reach the database.
 	Hostname string `json:"hostname"`
 	// The port number passed as a string which Ambar can use to connect to your Postgres database instance.
@@ -35,29 +31,21 @@ type PostgresDataSource struct {
 	// The named publication Ambar should use to indicate to Postgres what tables Ambar will be replicating from.  The publication name must be distinct from the name of any existing publication in the current database. See Postgres documentation for your specific version of Postgres for more information on Postgres publications.
 	PublicationName string `json:"publicationName"`
 	// A case sensitive, comma separated list string of columns which Ambar should read from the database. The ordering should be consistent with the table from which Ambar will read.
-	ColumnNames string `json:"columnNames"`
-	// A case sensitive string name of the column which is the incrementing sequence number for records on writes.
-	SequenceNumColumn string `json:"sequenceNumColumn"`
-	// A case sensitive string name of the column which is the ID which Ambar will partition message sequences by.
-	SequenceIdColumn string `json:"sequenceIdColumn"`
+	AdditionalColumns string `json:"additionalColumns"`
 }
 
 // NewPostgresDataSource instantiates a new PostgresDataSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPostgresDataSource(username string, password string, hostname string, hostPort string, databaseName string, tableName string, publicationName string, columnNames string, sequenceNumColumn string, sequenceIdColumn string) *PostgresDataSource {
+func NewPostgresDataSource(hostname string, hostPort string, databaseName string, tableName string, publicationName string, additionalColumns string) *PostgresDataSource {
 	this := PostgresDataSource{}
-	this.Username = username
-	this.Password = password
 	this.Hostname = hostname
 	this.HostPort = hostPort
 	this.DatabaseName = databaseName
 	this.TableName = tableName
 	this.PublicationName = publicationName
-	this.ColumnNames = columnNames
-	this.SequenceNumColumn = sequenceNumColumn
-	this.SequenceIdColumn = sequenceIdColumn
+	this.AdditionalColumns = additionalColumns
 	return &this
 }
 
@@ -67,54 +55,6 @@ func NewPostgresDataSource(username string, password string, hostname string, ho
 func NewPostgresDataSourceWithDefaults() *PostgresDataSource {
 	this := PostgresDataSource{}
 	return &this
-}
-
-// GetUsername returns the Username field value
-func (o *PostgresDataSource) GetUsername() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *PostgresDataSource) GetUsernameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *PostgresDataSource) SetUsername(v string) {
-	o.Username = v
-}
-
-// GetPassword returns the Password field value
-func (o *PostgresDataSource) GetPassword() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value
-// and a boolean to check if the value has been set.
-func (o *PostgresDataSource) GetPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Password, true
-}
-
-// SetPassword sets field value
-func (o *PostgresDataSource) SetPassword(v string) {
-	o.Password = v
 }
 
 // GetHostname returns the Hostname field value
@@ -237,76 +177,28 @@ func (o *PostgresDataSource) SetPublicationName(v string) {
 	o.PublicationName = v
 }
 
-// GetColumnNames returns the ColumnNames field value
-func (o *PostgresDataSource) GetColumnNames() string {
+// GetAdditionalColumns returns the AdditionalColumns field value
+func (o *PostgresDataSource) GetAdditionalColumns() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ColumnNames
+	return o.AdditionalColumns
 }
 
-// GetColumnNamesOk returns a tuple with the ColumnNames field value
+// GetAdditionalColumnsOk returns a tuple with the AdditionalColumns field value
 // and a boolean to check if the value has been set.
-func (o *PostgresDataSource) GetColumnNamesOk() (*string, bool) {
+func (o *PostgresDataSource) GetAdditionalColumnsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ColumnNames, true
+	return &o.AdditionalColumns, true
 }
 
-// SetColumnNames sets field value
-func (o *PostgresDataSource) SetColumnNames(v string) {
-	o.ColumnNames = v
-}
-
-// GetSequenceNumColumn returns the SequenceNumColumn field value
-func (o *PostgresDataSource) GetSequenceNumColumn() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SequenceNumColumn
-}
-
-// GetSequenceNumColumnOk returns a tuple with the SequenceNumColumn field value
-// and a boolean to check if the value has been set.
-func (o *PostgresDataSource) GetSequenceNumColumnOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SequenceNumColumn, true
-}
-
-// SetSequenceNumColumn sets field value
-func (o *PostgresDataSource) SetSequenceNumColumn(v string) {
-	o.SequenceNumColumn = v
-}
-
-// GetSequenceIdColumn returns the SequenceIdColumn field value
-func (o *PostgresDataSource) GetSequenceIdColumn() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SequenceIdColumn
-}
-
-// GetSequenceIdColumnOk returns a tuple with the SequenceIdColumn field value
-// and a boolean to check if the value has been set.
-func (o *PostgresDataSource) GetSequenceIdColumnOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SequenceIdColumn, true
-}
-
-// SetSequenceIdColumn sets field value
-func (o *PostgresDataSource) SetSequenceIdColumn(v string) {
-	o.SequenceIdColumn = v
+// SetAdditionalColumns sets field value
+func (o *PostgresDataSource) SetAdditionalColumns(v string) {
+	o.AdditionalColumns = v
 }
 
 func (o PostgresDataSource) MarshalJSON() ([]byte, error) {
@@ -319,16 +211,12 @@ func (o PostgresDataSource) MarshalJSON() ([]byte, error) {
 
 func (o PostgresDataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
 	toSerialize["hostname"] = o.Hostname
 	toSerialize["hostPort"] = o.HostPort
 	toSerialize["databaseName"] = o.DatabaseName
 	toSerialize["tableName"] = o.TableName
 	toSerialize["publicationName"] = o.PublicationName
-	toSerialize["columnNames"] = o.ColumnNames
-	toSerialize["sequenceNumColumn"] = o.SequenceNumColumn
-	toSerialize["sequenceIdColumn"] = o.SequenceIdColumn
+	toSerialize["additionalColumns"] = o.AdditionalColumns
 	return toSerialize, nil
 }
 

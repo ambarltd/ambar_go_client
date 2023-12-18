@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **string** | The UTC time at which the DataDestination was created. | [optional] 
 **DestinationEndpoint** | Pointer to **string** | The HTTP endpoint which Ambar sends filtered record sequences to. | [optional] 
-**ProjectionName** | Pointer to **string** | The name given to this DataDestinations projection at creation. | [optional] 
-**FilterId** | Pointer to **string** | The Ambar resourceId for the Filter which is applied to record sequences sent to this Data Destination. | [optional] 
+**Description** | Pointer to **string** | The description of the DataDestination given when it was created. | [optional] 
+**DestinationName** | Pointer to **string** | The name given to this DataDestinations projection at creation. | [optional] 
+**FilterIds** | Pointer to **[]string** | The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination. | [optional] 
 **ResourceId** | Pointer to **string** | The Ambar resourceId corresponding to this DataDestination. | [optional] 
 **State** | Pointer to **string** | The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs. | [optional] 
 
@@ -80,55 +81,80 @@ SetDestinationEndpoint sets DestinationEndpoint field to given value.
 
 HasDestinationEndpoint returns a boolean if a field has been set.
 
-### GetProjectionName
+### GetDescription
 
-`func (o *DataDestination) GetProjectionName() string`
+`func (o *DataDestination) GetDescription() string`
 
-GetProjectionName returns the ProjectionName field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetProjectionNameOk
+### GetDescriptionOk
 
-`func (o *DataDestination) GetProjectionNameOk() (*string, bool)`
+`func (o *DataDestination) GetDescriptionOk() (*string, bool)`
 
-GetProjectionNameOk returns a tuple with the ProjectionName field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjectionName
+### SetDescription
 
-`func (o *DataDestination) SetProjectionName(v string)`
+`func (o *DataDestination) SetDescription(v string)`
 
-SetProjectionName sets ProjectionName field to given value.
+SetDescription sets Description field to given value.
 
-### HasProjectionName
+### HasDescription
 
-`func (o *DataDestination) HasProjectionName() bool`
+`func (o *DataDestination) HasDescription() bool`
 
-HasProjectionName returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetFilterId
+### GetDestinationName
 
-`func (o *DataDestination) GetFilterId() string`
+`func (o *DataDestination) GetDestinationName() string`
 
-GetFilterId returns the FilterId field if non-nil, zero value otherwise.
+GetDestinationName returns the DestinationName field if non-nil, zero value otherwise.
 
-### GetFilterIdOk
+### GetDestinationNameOk
 
-`func (o *DataDestination) GetFilterIdOk() (*string, bool)`
+`func (o *DataDestination) GetDestinationNameOk() (*string, bool)`
 
-GetFilterIdOk returns a tuple with the FilterId field if it's non-nil, zero value otherwise
+GetDestinationNameOk returns a tuple with the DestinationName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilterId
+### SetDestinationName
 
-`func (o *DataDestination) SetFilterId(v string)`
+`func (o *DataDestination) SetDestinationName(v string)`
 
-SetFilterId sets FilterId field to given value.
+SetDestinationName sets DestinationName field to given value.
 
-### HasFilterId
+### HasDestinationName
 
-`func (o *DataDestination) HasFilterId() bool`
+`func (o *DataDestination) HasDestinationName() bool`
 
-HasFilterId returns a boolean if a field has been set.
+HasDestinationName returns a boolean if a field has been set.
+
+### GetFilterIds
+
+`func (o *DataDestination) GetFilterIds() []string`
+
+GetFilterIds returns the FilterIds field if non-nil, zero value otherwise.
+
+### GetFilterIdsOk
+
+`func (o *DataDestination) GetFilterIdsOk() (*[]string, bool)`
+
+GetFilterIdsOk returns a tuple with the FilterIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilterIds
+
+`func (o *DataDestination) SetFilterIds(v []string)`
+
+SetFilterIds sets FilterIds field to given value.
+
+### HasFilterIds
+
+`func (o *DataDestination) HasFilterIds() bool`
+
+HasFilterIds returns a boolean if a field has been set.
 
 ### GetResourceId
 

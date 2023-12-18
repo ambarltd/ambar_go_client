@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | 
-**FilterId** | **string** | The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
-**ProjectionName** | **string** | A name for this DataDestination projection | 
+**Description** | Pointer to **string** | A description for identifying this DataDestination. | [optional] 
+**FilterIds** | **[]string** | The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
+**DestinationName** | Pointer to **string** | A name for this DataDestination projection | [optional] 
 **Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 **Username** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCreateDataDestinationRequest
 
-`func NewCreateDataDestinationRequest(destinationEndpoint string, filterId string, projectionName string, password string, username string, ) *CreateDataDestinationRequest`
+`func NewCreateDataDestinationRequest(destinationEndpoint string, filterIds []string, password string, username string, ) *CreateDataDestinationRequest`
 
 NewCreateDataDestinationRequest instantiates a new CreateDataDestinationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,45 +50,75 @@ and a boolean to check if the value has been set.
 SetDestinationEndpoint sets DestinationEndpoint field to given value.
 
 
-### GetFilterId
+### GetDescription
 
-`func (o *CreateDataDestinationRequest) GetFilterId() string`
+`func (o *CreateDataDestinationRequest) GetDescription() string`
 
-GetFilterId returns the FilterId field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetFilterIdOk
+### GetDescriptionOk
 
-`func (o *CreateDataDestinationRequest) GetFilterIdOk() (*string, bool)`
+`func (o *CreateDataDestinationRequest) GetDescriptionOk() (*string, bool)`
 
-GetFilterIdOk returns a tuple with the FilterId field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilterId
+### SetDescription
 
-`func (o *CreateDataDestinationRequest) SetFilterId(v string)`
+`func (o *CreateDataDestinationRequest) SetDescription(v string)`
 
-SetFilterId sets FilterId field to given value.
+SetDescription sets Description field to given value.
 
+### HasDescription
 
-### GetProjectionName
+`func (o *CreateDataDestinationRequest) HasDescription() bool`
 
-`func (o *CreateDataDestinationRequest) GetProjectionName() string`
+HasDescription returns a boolean if a field has been set.
 
-GetProjectionName returns the ProjectionName field if non-nil, zero value otherwise.
+### GetFilterIds
 
-### GetProjectionNameOk
+`func (o *CreateDataDestinationRequest) GetFilterIds() []string`
 
-`func (o *CreateDataDestinationRequest) GetProjectionNameOk() (*string, bool)`
+GetFilterIds returns the FilterIds field if non-nil, zero value otherwise.
 
-GetProjectionNameOk returns a tuple with the ProjectionName field if it's non-nil, zero value otherwise
+### GetFilterIdsOk
+
+`func (o *CreateDataDestinationRequest) GetFilterIdsOk() (*[]string, bool)`
+
+GetFilterIdsOk returns a tuple with the FilterIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjectionName
+### SetFilterIds
 
-`func (o *CreateDataDestinationRequest) SetProjectionName(v string)`
+`func (o *CreateDataDestinationRequest) SetFilterIds(v []string)`
 
-SetProjectionName sets ProjectionName field to given value.
+SetFilterIds sets FilterIds field to given value.
 
+
+### GetDestinationName
+
+`func (o *CreateDataDestinationRequest) GetDestinationName() string`
+
+GetDestinationName returns the DestinationName field if non-nil, zero value otherwise.
+
+### GetDestinationNameOk
+
+`func (o *CreateDataDestinationRequest) GetDestinationNameOk() (*string, bool)`
+
+GetDestinationNameOk returns a tuple with the DestinationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationName
+
+`func (o *CreateDataDestinationRequest) SetDestinationName(v string)`
+
+SetDestinationName sets DestinationName field to given value.
+
+### HasDestinationName
+
+`func (o *CreateDataDestinationRequest) HasDestinationName() bool`
+
+HasDestinationName returns a boolean if a field has been set.
 
 ### GetPassword
 

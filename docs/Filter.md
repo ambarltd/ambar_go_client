@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DataDestinationsUsingFilter** | Pointer to **[]string** | The list of DataDestination ResourceIds which use this Filter. | [optional] 
 **DataSourcesInFilter** | Pointer to **[]string** | The list of DataSource ResourceIds which this Filter will read from. | [optional] 
 **ResourceId** | Pointer to **string** | The Ambar resourceId corresponding to this Filter. | [optional] 
+**Description** | Pointer to **string** | The description of the Filter given when it was created. | [optional] 
 **State** | Pointer to **string** | The ResourceState of this Filter. For possible values see ResourceState in our developer docs. | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetResourceId sets ResourceId field to given value.
 `func (o *Filter) HasResourceId() bool`
 
 HasResourceId returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *Filter) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Filter) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Filter) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Filter) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetState
 

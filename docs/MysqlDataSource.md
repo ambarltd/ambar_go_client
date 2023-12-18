@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Username** | **string** | A case sensitive string for the user Ambar should use to connect to your MySQL database. | 
-**Password** | **string** | A case sensitive string for the user Ambar should use to connect to your MySQL database. | 
 **Hostname** | **string** | A case insensitive string for the host on which your MySQL database is running and which Ambar can use to reach the database. | 
 **HostPort** | **string** | The port number passed as a string which Ambar can use to connect to your MySQL database instance. | 
 **DatabaseName** | **string** | The case sensitive string name of the database on your database host. | 
 **TableName** | **string** | The case sensitive string name of the table the DataSource should read. | 
-**GloballyUniqueColumnName** | **string** | The name of a column where the value for any record is globally unique. | 
-**IncrementingColumnName** | **string** | The name of a column which monotonically increases on database writes. | 
-**PartitioningColumnName** | **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | 
+**GloballyUniqueColumn** | **string** | The name of a column where the value for any record is globally unique. | 
+**SerialColumn** | **string** | The name of a column which monotonically increases on database writes. | 
+**PartitioningColumn** | **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | 
 **AdditionalColumns** | **string** | A case sensitive, comma separated list string of additional columns to be read from  the table into Ambar. | 
 **BinLogReplicationServerId** | **string** | The server_id value used when starting the MySQL server. See MySQL docs for more information about this value and its defaults when not configured. | 
 **TlsTerminationOverrideHost** | **string** | The hostname of the server responsible for terminating TLS connections for your server,  for example if your server is behind a load balancer. | 
@@ -21,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewMysqlDataSource
 
-`func NewMysqlDataSource(username string, password string, hostname string, hostPort string, databaseName string, tableName string, globallyUniqueColumnName string, incrementingColumnName string, partitioningColumnName string, additionalColumns string, binLogReplicationServerId string, tlsTerminationOverrideHost string, ) *MysqlDataSource`
+`func NewMysqlDataSource(hostname string, hostPort string, databaseName string, tableName string, globallyUniqueColumn string, serialColumn string, partitioningColumn string, additionalColumns string, binLogReplicationServerId string, tlsTerminationOverrideHost string, ) *MysqlDataSource`
 
 NewMysqlDataSource instantiates a new MysqlDataSource object
 This constructor will assign default values to properties that have it defined,
@@ -35,46 +33,6 @@ will change when the set of required properties is changed
 NewMysqlDataSourceWithDefaults instantiates a new MysqlDataSource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUsername
-
-`func (o *MysqlDataSource) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *MysqlDataSource) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *MysqlDataSource) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-
-### GetPassword
-
-`func (o *MysqlDataSource) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *MysqlDataSource) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *MysqlDataSource) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
 
 ### GetHostname
 
@@ -156,64 +114,64 @@ and a boolean to check if the value has been set.
 SetTableName sets TableName field to given value.
 
 
-### GetGloballyUniqueColumnName
+### GetGloballyUniqueColumn
 
-`func (o *MysqlDataSource) GetGloballyUniqueColumnName() string`
+`func (o *MysqlDataSource) GetGloballyUniqueColumn() string`
 
-GetGloballyUniqueColumnName returns the GloballyUniqueColumnName field if non-nil, zero value otherwise.
+GetGloballyUniqueColumn returns the GloballyUniqueColumn field if non-nil, zero value otherwise.
 
-### GetGloballyUniqueColumnNameOk
+### GetGloballyUniqueColumnOk
 
-`func (o *MysqlDataSource) GetGloballyUniqueColumnNameOk() (*string, bool)`
+`func (o *MysqlDataSource) GetGloballyUniqueColumnOk() (*string, bool)`
 
-GetGloballyUniqueColumnNameOk returns a tuple with the GloballyUniqueColumnName field if it's non-nil, zero value otherwise
+GetGloballyUniqueColumnOk returns a tuple with the GloballyUniqueColumn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGloballyUniqueColumnName
+### SetGloballyUniqueColumn
 
-`func (o *MysqlDataSource) SetGloballyUniqueColumnName(v string)`
+`func (o *MysqlDataSource) SetGloballyUniqueColumn(v string)`
 
-SetGloballyUniqueColumnName sets GloballyUniqueColumnName field to given value.
+SetGloballyUniqueColumn sets GloballyUniqueColumn field to given value.
 
 
-### GetIncrementingColumnName
+### GetSerialColumn
 
-`func (o *MysqlDataSource) GetIncrementingColumnName() string`
+`func (o *MysqlDataSource) GetSerialColumn() string`
 
-GetIncrementingColumnName returns the IncrementingColumnName field if non-nil, zero value otherwise.
+GetSerialColumn returns the SerialColumn field if non-nil, zero value otherwise.
 
-### GetIncrementingColumnNameOk
+### GetSerialColumnOk
 
-`func (o *MysqlDataSource) GetIncrementingColumnNameOk() (*string, bool)`
+`func (o *MysqlDataSource) GetSerialColumnOk() (*string, bool)`
 
-GetIncrementingColumnNameOk returns a tuple with the IncrementingColumnName field if it's non-nil, zero value otherwise
+GetSerialColumnOk returns a tuple with the SerialColumn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIncrementingColumnName
+### SetSerialColumn
 
-`func (o *MysqlDataSource) SetIncrementingColumnName(v string)`
+`func (o *MysqlDataSource) SetSerialColumn(v string)`
 
-SetIncrementingColumnName sets IncrementingColumnName field to given value.
+SetSerialColumn sets SerialColumn field to given value.
 
 
-### GetPartitioningColumnName
+### GetPartitioningColumn
 
-`func (o *MysqlDataSource) GetPartitioningColumnName() string`
+`func (o *MysqlDataSource) GetPartitioningColumn() string`
 
-GetPartitioningColumnName returns the PartitioningColumnName field if non-nil, zero value otherwise.
+GetPartitioningColumn returns the PartitioningColumn field if non-nil, zero value otherwise.
 
-### GetPartitioningColumnNameOk
+### GetPartitioningColumnOk
 
-`func (o *MysqlDataSource) GetPartitioningColumnNameOk() (*string, bool)`
+`func (o *MysqlDataSource) GetPartitioningColumnOk() (*string, bool)`
 
-GetPartitioningColumnNameOk returns a tuple with the PartitioningColumnName field if it's non-nil, zero value otherwise
+GetPartitioningColumnOk returns a tuple with the PartitioningColumn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartitioningColumnName
+### SetPartitioningColumn
 
-`func (o *MysqlDataSource) SetPartitioningColumnName(v string)`
+`func (o *MysqlDataSource) SetPartitioningColumn(v string)`
 
-SetPartitioningColumnName sets PartitioningColumnName field to given value.
+SetPartitioningColumn sets PartitioningColumn field to given value.
 
 
 ### GetAdditionalColumns

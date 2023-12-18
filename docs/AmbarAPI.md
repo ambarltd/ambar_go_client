@@ -38,7 +38,7 @@ import (
 )
 
 func main() {
-    createDataDestinationRequest := *openapiclient.NewCreateDataDestinationRequest("DestinationEndpoint_example", "FilterId_example", "ProjectionName_example", "Password_example", "Username_example") // CreateDataDestinationRequest | 
+    createDataDestinationRequest := *openapiclient.NewCreateDataDestinationRequest("DestinationEndpoint_example", []string{"FilterIds_example"}, "Password_example", "Username_example") // CreateDataDestinationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest(openapiclient.CreateDataSourceRequest_dataSourceConfig{MysqlDataSource: openapiclient.NewMysqlDataSource("Username_example", "Password_example", "Hostname_example", "HostPort_example", "DatabaseName_example", "TableName_example", "GloballyUniqueColumnName_example", "IncrementingColumnName_example", "PartitioningColumnName_example", "AdditionalColumns_example", "BinLogReplicationServerId_example", "TlsTerminationOverrideHost_example")}, "DataSourceType_example") // CreateDataSourceRequest | 
+    createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest("DataSourceType_example", openapiclient.CreateDataSourceRequest_dataSourceConfig{PostgresDataSource: openapiclient.NewPostgresDataSource("Hostname_example", "HostPort_example", "DatabaseName_example", "TableName_example", "PublicationName_example", "AdditionalColumns_example")}) // CreateDataSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -170,7 +170,7 @@ import (
 )
 
 func main() {
-    createFilterRequest := *openapiclient.NewCreateFilterRequest("FilterContents_example") // CreateFilterRequest | 
+    createFilterRequest := *openapiclient.NewCreateFilterRequest("FilterContents_example", "DataSourceId_example") // CreateFilterRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 ## ListResources
 
-> []ResourceTypeDetails ListResources(ctx).Execute()
+> ListResourcesResponse ListResources(ctx).ListResourcesRequest(listResourcesRequest).Execute()
 
 List the Ambar resources in your Ambar environment.
 
@@ -632,31 +632,36 @@ import (
 )
 
 func main() {
+    listResourcesRequest := *openapiclient.NewListResourcesRequest() // ListResourcesRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.ListResources(context.Background()).Execute()
+    resp, r, err := apiClient.AmbarAPI.ListResources(context.Background()).ListResourcesRequest(listResourcesRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.ListResources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListResources`: []ResourceTypeDetails
+    // response from `ListResources`: ListResourcesResponse
     fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.ListResources`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListResourcesRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listResourcesRequest** | [**ListResourcesRequest**](ListResourcesRequest.md) |  | 
+
 ### Return type
 
-[**[]ResourceTypeDetails**](ResourceTypeDetails.md)
+[**ListResourcesResponse**](ListResourcesResponse.md)
 
 ### Authorization
 
@@ -664,7 +669,7 @@ Other parameters are passed through a pointer to a apiListResourcesRequest struc
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

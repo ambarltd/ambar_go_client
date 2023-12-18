@@ -20,10 +20,6 @@ var _ MappedNullable = &MysqlDataSource{}
 
 // MysqlDataSource struct for MysqlDataSource
 type MysqlDataSource struct {
-	// A case sensitive string for the user Ambar should use to connect to your MySQL database.
-	Username string `json:"username"`
-	// A case sensitive string for the user Ambar should use to connect to your MySQL database.
-	Password string `json:"password"`
 	// A case insensitive string for the host on which your MySQL database is running and which Ambar can use to reach the database.
 	Hostname string `json:"hostname"`
 	// The port number passed as a string which Ambar can use to connect to your MySQL database instance.
@@ -33,11 +29,11 @@ type MysqlDataSource struct {
 	// The case sensitive string name of the table the DataSource should read.
 	TableName string `json:"tableName"`
 	// The name of a column where the value for any record is globally unique.
-	GloballyUniqueColumnName string `json:"globallyUniqueColumnName"`
+	GloballyUniqueColumn string `json:"globallyUniqueColumn"`
 	// The name of a column which monotonically increases on database writes.
-	IncrementingColumnName string `json:"incrementingColumnName"`
+	SerialColumn string `json:"serialColumn"`
 	// A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records.
-	PartitioningColumnName string `json:"partitioningColumnName"`
+	PartitioningColumn string `json:"partitioningColumn"`
 	// A case sensitive, comma separated list string of additional columns to be read from  the table into Ambar.
 	AdditionalColumns string `json:"additionalColumns"`
 	// The server_id value used when starting the MySQL server. See MySQL docs for more information about this value and its defaults when not configured.
@@ -50,17 +46,15 @@ type MysqlDataSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMysqlDataSource(username string, password string, hostname string, hostPort string, databaseName string, tableName string, globallyUniqueColumnName string, incrementingColumnName string, partitioningColumnName string, additionalColumns string, binLogReplicationServerId string, tlsTerminationOverrideHost string) *MysqlDataSource {
+func NewMysqlDataSource(hostname string, hostPort string, databaseName string, tableName string, globallyUniqueColumn string, serialColumn string, partitioningColumn string, additionalColumns string, binLogReplicationServerId string, tlsTerminationOverrideHost string) *MysqlDataSource {
 	this := MysqlDataSource{}
-	this.Username = username
-	this.Password = password
 	this.Hostname = hostname
 	this.HostPort = hostPort
 	this.DatabaseName = databaseName
 	this.TableName = tableName
-	this.GloballyUniqueColumnName = globallyUniqueColumnName
-	this.IncrementingColumnName = incrementingColumnName
-	this.PartitioningColumnName = partitioningColumnName
+	this.GloballyUniqueColumn = globallyUniqueColumn
+	this.SerialColumn = serialColumn
+	this.PartitioningColumn = partitioningColumn
 	this.AdditionalColumns = additionalColumns
 	this.BinLogReplicationServerId = binLogReplicationServerId
 	this.TlsTerminationOverrideHost = tlsTerminationOverrideHost
@@ -73,54 +67,6 @@ func NewMysqlDataSource(username string, password string, hostname string, hostP
 func NewMysqlDataSourceWithDefaults() *MysqlDataSource {
 	this := MysqlDataSource{}
 	return &this
-}
-
-// GetUsername returns the Username field value
-func (o *MysqlDataSource) GetUsername() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *MysqlDataSource) GetUsernameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *MysqlDataSource) SetUsername(v string) {
-	o.Username = v
-}
-
-// GetPassword returns the Password field value
-func (o *MysqlDataSource) GetPassword() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value
-// and a boolean to check if the value has been set.
-func (o *MysqlDataSource) GetPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Password, true
-}
-
-// SetPassword sets field value
-func (o *MysqlDataSource) SetPassword(v string) {
-	o.Password = v
 }
 
 // GetHostname returns the Hostname field value
@@ -219,76 +165,76 @@ func (o *MysqlDataSource) SetTableName(v string) {
 	o.TableName = v
 }
 
-// GetGloballyUniqueColumnName returns the GloballyUniqueColumnName field value
-func (o *MysqlDataSource) GetGloballyUniqueColumnName() string {
+// GetGloballyUniqueColumn returns the GloballyUniqueColumn field value
+func (o *MysqlDataSource) GetGloballyUniqueColumn() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.GloballyUniqueColumnName
+	return o.GloballyUniqueColumn
 }
 
-// GetGloballyUniqueColumnNameOk returns a tuple with the GloballyUniqueColumnName field value
+// GetGloballyUniqueColumnOk returns a tuple with the GloballyUniqueColumn field value
 // and a boolean to check if the value has been set.
-func (o *MysqlDataSource) GetGloballyUniqueColumnNameOk() (*string, bool) {
+func (o *MysqlDataSource) GetGloballyUniqueColumnOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.GloballyUniqueColumnName, true
+	return &o.GloballyUniqueColumn, true
 }
 
-// SetGloballyUniqueColumnName sets field value
-func (o *MysqlDataSource) SetGloballyUniqueColumnName(v string) {
-	o.GloballyUniqueColumnName = v
+// SetGloballyUniqueColumn sets field value
+func (o *MysqlDataSource) SetGloballyUniqueColumn(v string) {
+	o.GloballyUniqueColumn = v
 }
 
-// GetIncrementingColumnName returns the IncrementingColumnName field value
-func (o *MysqlDataSource) GetIncrementingColumnName() string {
+// GetSerialColumn returns the SerialColumn field value
+func (o *MysqlDataSource) GetSerialColumn() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.IncrementingColumnName
+	return o.SerialColumn
 }
 
-// GetIncrementingColumnNameOk returns a tuple with the IncrementingColumnName field value
+// GetSerialColumnOk returns a tuple with the SerialColumn field value
 // and a boolean to check if the value has been set.
-func (o *MysqlDataSource) GetIncrementingColumnNameOk() (*string, bool) {
+func (o *MysqlDataSource) GetSerialColumnOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.IncrementingColumnName, true
+	return &o.SerialColumn, true
 }
 
-// SetIncrementingColumnName sets field value
-func (o *MysqlDataSource) SetIncrementingColumnName(v string) {
-	o.IncrementingColumnName = v
+// SetSerialColumn sets field value
+func (o *MysqlDataSource) SetSerialColumn(v string) {
+	o.SerialColumn = v
 }
 
-// GetPartitioningColumnName returns the PartitioningColumnName field value
-func (o *MysqlDataSource) GetPartitioningColumnName() string {
+// GetPartitioningColumn returns the PartitioningColumn field value
+func (o *MysqlDataSource) GetPartitioningColumn() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PartitioningColumnName
+	return o.PartitioningColumn
 }
 
-// GetPartitioningColumnNameOk returns a tuple with the PartitioningColumnName field value
+// GetPartitioningColumnOk returns a tuple with the PartitioningColumn field value
 // and a boolean to check if the value has been set.
-func (o *MysqlDataSource) GetPartitioningColumnNameOk() (*string, bool) {
+func (o *MysqlDataSource) GetPartitioningColumnOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PartitioningColumnName, true
+	return &o.PartitioningColumn, true
 }
 
-// SetPartitioningColumnName sets field value
-func (o *MysqlDataSource) SetPartitioningColumnName(v string) {
-	o.PartitioningColumnName = v
+// SetPartitioningColumn sets field value
+func (o *MysqlDataSource) SetPartitioningColumn(v string) {
+	o.PartitioningColumn = v
 }
 
 // GetAdditionalColumns returns the AdditionalColumns field value
@@ -373,15 +319,13 @@ func (o MysqlDataSource) MarshalJSON() ([]byte, error) {
 
 func (o MysqlDataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
 	toSerialize["hostname"] = o.Hostname
 	toSerialize["hostPort"] = o.HostPort
 	toSerialize["databaseName"] = o.DatabaseName
 	toSerialize["tableName"] = o.TableName
-	toSerialize["globallyUniqueColumnName"] = o.GloballyUniqueColumnName
-	toSerialize["incrementingColumnName"] = o.IncrementingColumnName
-	toSerialize["partitioningColumnName"] = o.PartitioningColumnName
+	toSerialize["globallyUniqueColumn"] = o.GloballyUniqueColumn
+	toSerialize["serialColumn"] = o.SerialColumn
+	toSerialize["partitioningColumn"] = o.PartitioningColumn
 	toSerialize["additionalColumns"] = o.AdditionalColumns
 	toSerialize["binLogReplicationServerId"] = o.BinLogReplicationServerId
 	toSerialize["tlsTerminationOverrideHost"] = o.TlsTerminationOverrideHost

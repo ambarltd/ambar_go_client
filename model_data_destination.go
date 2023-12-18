@@ -24,10 +24,12 @@ type DataDestination struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The HTTP endpoint which Ambar sends filtered record sequences to.
 	DestinationEndpoint *string `json:"destinationEndpoint,omitempty"`
+	// The description of the DataDestination given when it was created.
+	Description *string `json:"description,omitempty"`
 	// The name given to this DataDestinations projection at creation.
-	ProjectionName *string `json:"projectionName,omitempty"`
-	// The Ambar resourceId for the Filter which is applied to record sequences sent to this Data Destination.
-	FilterId *string `json:"filterId,omitempty"`
+	DestinationName *string `json:"destinationName,omitempty"`
+	// The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination.
+	FilterIds []string `json:"filterIds,omitempty"`
 	// The Ambar resourceId corresponding to this DataDestination.
 	ResourceId *string `json:"resourceId,omitempty"`
 	// The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs.
@@ -115,68 +117,100 @@ func (o *DataDestination) SetDestinationEndpoint(v string) {
 	o.DestinationEndpoint = &v
 }
 
-// GetProjectionName returns the ProjectionName field value if set, zero value otherwise.
-func (o *DataDestination) GetProjectionName() string {
-	if o == nil || IsNil(o.ProjectionName) {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *DataDestination) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectionName
+	return *o.Description
 }
 
-// GetProjectionNameOk returns a tuple with the ProjectionName field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataDestination) GetProjectionNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectionName) {
+func (o *DataDestination) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.ProjectionName, true
+	return o.Description, true
 }
 
-// HasProjectionName returns a boolean if a field has been set.
-func (o *DataDestination) HasProjectionName() bool {
-	if o != nil && !IsNil(o.ProjectionName) {
+// HasDescription returns a boolean if a field has been set.
+func (o *DataDestination) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectionName gets a reference to the given string and assigns it to the ProjectionName field.
-func (o *DataDestination) SetProjectionName(v string) {
-	o.ProjectionName = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *DataDestination) SetDescription(v string) {
+	o.Description = &v
 }
 
-// GetFilterId returns the FilterId field value if set, zero value otherwise.
-func (o *DataDestination) GetFilterId() string {
-	if o == nil || IsNil(o.FilterId) {
+// GetDestinationName returns the DestinationName field value if set, zero value otherwise.
+func (o *DataDestination) GetDestinationName() string {
+	if o == nil || IsNil(o.DestinationName) {
 		var ret string
 		return ret
 	}
-	return *o.FilterId
+	return *o.DestinationName
 }
 
-// GetFilterIdOk returns a tuple with the FilterId field value if set, nil otherwise
+// GetDestinationNameOk returns a tuple with the DestinationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataDestination) GetFilterIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FilterId) {
+func (o *DataDestination) GetDestinationNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DestinationName) {
 		return nil, false
 	}
-	return o.FilterId, true
+	return o.DestinationName, true
 }
 
-// HasFilterId returns a boolean if a field has been set.
-func (o *DataDestination) HasFilterId() bool {
-	if o != nil && !IsNil(o.FilterId) {
+// HasDestinationName returns a boolean if a field has been set.
+func (o *DataDestination) HasDestinationName() bool {
+	if o != nil && !IsNil(o.DestinationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetFilterId gets a reference to the given string and assigns it to the FilterId field.
-func (o *DataDestination) SetFilterId(v string) {
-	o.FilterId = &v
+// SetDestinationName gets a reference to the given string and assigns it to the DestinationName field.
+func (o *DataDestination) SetDestinationName(v string) {
+	o.DestinationName = &v
+}
+
+// GetFilterIds returns the FilterIds field value if set, zero value otherwise.
+func (o *DataDestination) GetFilterIds() []string {
+	if o == nil || IsNil(o.FilterIds) {
+		var ret []string
+		return ret
+	}
+	return o.FilterIds
+}
+
+// GetFilterIdsOk returns a tuple with the FilterIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataDestination) GetFilterIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.FilterIds) {
+		return nil, false
+	}
+	return o.FilterIds, true
+}
+
+// HasFilterIds returns a boolean if a field has been set.
+func (o *DataDestination) HasFilterIds() bool {
+	if o != nil && !IsNil(o.FilterIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterIds gets a reference to the given []string and assigns it to the FilterIds field.
+func (o *DataDestination) SetFilterIds(v []string) {
+	o.FilterIds = v
 }
 
 // GetResourceId returns the ResourceId field value if set, zero value otherwise.
@@ -259,11 +293,14 @@ func (o DataDestination) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DestinationEndpoint) {
 		toSerialize["destinationEndpoint"] = o.DestinationEndpoint
 	}
-	if !IsNil(o.ProjectionName) {
-		toSerialize["projectionName"] = o.ProjectionName
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.FilterId) {
-		toSerialize["filterId"] = o.FilterId
+	if !IsNil(o.DestinationName) {
+		toSerialize["destinationName"] = o.DestinationName
+	}
+	if !IsNil(o.FilterIds) {
+		toSerialize["filterIds"] = o.FilterIds
 	}
 	if !IsNil(o.ResourceId) {
 		toSerialize["resourceId"] = o.ResourceId

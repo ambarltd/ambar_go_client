@@ -20,17 +20,22 @@ var _ MappedNullable = &CreateFilterRequest{}
 
 // CreateFilterRequest The request properties for creating an Ambar Filter.
 type CreateFilterRequest struct {
-	// The description of record filtering this filter should do. For details see the Filters section in our developer docs.
+	// A base64 encoded Ambar Filter. For details about Ambar filter syntax, see our developer docs.
 	FilterContents string `json:"filterContents"`
+	// The Resource Id of a DataSource resource, which this filter should be applied to by a DataDestination.
+	DataSourceId string `json:"dataSourceId"`
+	// A description for identifying this Filter.
+	Description *string `json:"description,omitempty"`
 }
 
 // NewCreateFilterRequest instantiates a new CreateFilterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateFilterRequest(filterContents string) *CreateFilterRequest {
+func NewCreateFilterRequest(filterContents string, dataSourceId string) *CreateFilterRequest {
 	this := CreateFilterRequest{}
 	this.FilterContents = filterContents
+	this.DataSourceId = dataSourceId
 	return &this
 }
 
@@ -66,6 +71,62 @@ func (o *CreateFilterRequest) SetFilterContents(v string) {
 	o.FilterContents = v
 }
 
+// GetDataSourceId returns the DataSourceId field value
+func (o *CreateFilterRequest) GetDataSourceId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DataSourceId
+}
+
+// GetDataSourceIdOk returns a tuple with the DataSourceId field value
+// and a boolean to check if the value has been set.
+func (o *CreateFilterRequest) GetDataSourceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DataSourceId, true
+}
+
+// SetDataSourceId sets field value
+func (o *CreateFilterRequest) SetDataSourceId(v string) {
+	o.DataSourceId = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateFilterRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateFilterRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateFilterRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateFilterRequest) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o CreateFilterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -77,6 +138,10 @@ func (o CreateFilterRequest) MarshalJSON() ([]byte, error) {
 func (o CreateFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["filterContents"] = o.FilterContents
+	toSerialize["dataSourceId"] = o.DataSourceId
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	return toSerialize, nil
 }
 

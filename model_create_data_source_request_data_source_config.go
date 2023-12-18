@@ -16,17 +16,9 @@ import (
 	"fmt"
 )
 
-// CreateDataSourceRequestDataSourceConfig - A object containing inputs which are specific depending on the type of DataSource being created. See out developer docs for supported DataSourceTypes.
+// CreateDataSourceRequestDataSourceConfig - A object containing inputs which are specific depending on the type of DataSource being created. See out developer docs for supported DataSourceTypes and corresponding configurations.
 type CreateDataSourceRequestDataSourceConfig struct {
-	MysqlDataSource *MysqlDataSource
 	PostgresDataSource *PostgresDataSource
-}
-
-// MysqlDataSourceAsCreateDataSourceRequestDataSourceConfig is a convenience function that returns MysqlDataSource wrapped in CreateDataSourceRequestDataSourceConfig
-func MysqlDataSourceAsCreateDataSourceRequestDataSourceConfig(v *MysqlDataSource) CreateDataSourceRequestDataSourceConfig {
-	return CreateDataSourceRequestDataSourceConfig{
-		MysqlDataSource: v,
-	}
 }
 
 // PostgresDataSourceAsCreateDataSourceRequestDataSourceConfig is a convenience function that returns PostgresDataSource wrapped in CreateDataSourceRequestDataSourceConfig
@@ -41,19 +33,6 @@ func PostgresDataSourceAsCreateDataSourceRequestDataSourceConfig(v *PostgresData
 func (dst *CreateDataSourceRequestDataSourceConfig) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into MysqlDataSource
-	err = newStrictDecoder(data).Decode(&dst.MysqlDataSource)
-	if err == nil {
-		jsonMysqlDataSource, _ := json.Marshal(dst.MysqlDataSource)
-		if string(jsonMysqlDataSource) == "{}" { // empty struct
-			dst.MysqlDataSource = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.MysqlDataSource = nil
-	}
-
 	// try to unmarshal data into PostgresDataSource
 	err = newStrictDecoder(data).Decode(&dst.PostgresDataSource)
 	if err == nil {
@@ -69,7 +48,6 @@ func (dst *CreateDataSourceRequestDataSourceConfig) UnmarshalJSON(data []byte) e
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.MysqlDataSource = nil
 		dst.PostgresDataSource = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CreateDataSourceRequestDataSourceConfig)")
@@ -82,10 +60,6 @@ func (dst *CreateDataSourceRequestDataSourceConfig) UnmarshalJSON(data []byte) e
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CreateDataSourceRequestDataSourceConfig) MarshalJSON() ([]byte, error) {
-	if src.MysqlDataSource != nil {
-		return json.Marshal(&src.MysqlDataSource)
-	}
-
 	if src.PostgresDataSource != nil {
 		return json.Marshal(&src.PostgresDataSource)
 	}
@@ -98,10 +72,6 @@ func (obj *CreateDataSourceRequestDataSourceConfig) GetActualInstance() (interfa
 	if obj == nil {
 		return nil
 	}
-	if obj.MysqlDataSource != nil {
-		return obj.MysqlDataSource
-	}
-
 	if obj.PostgresDataSource != nil {
 		return obj.PostgresDataSource
 	}

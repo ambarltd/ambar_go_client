@@ -4,22 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Username** | **string** | A case sensitive string for the user Ambar should use to connect to your Postgres database. | 
-**Password** | **string** | A case sensitive string for the user Ambar should use to connect to your Postgres database. | 
 **Hostname** | **string** | A case insensitive string for the host on which your Postgres database is running and which Ambar can use to reach the database. | 
 **HostPort** | **string** | The port number passed as a string which Ambar can use to connect to your Postgres database instance. | 
 **DatabaseName** | **string** | The case sensitive string name of the database on your database host. | 
 **TableName** | **string** | The case sensitive string name of the table the DataSource should read. | 
 **PublicationName** | **string** | The named publication Ambar should use to indicate to Postgres what tables Ambar will be replicating from.  The publication name must be distinct from the name of any existing publication in the current database. See Postgres documentation for your specific version of Postgres for more information on Postgres publications. | 
-**ColumnNames** | **string** | A case sensitive, comma separated list string of columns which Ambar should read from the database. The ordering should be consistent with the table from which Ambar will read. | 
-**SequenceNumColumn** | **string** | A case sensitive string name of the column which is the incrementing sequence number for records on writes. | 
-**SequenceIdColumn** | **string** | A case sensitive string name of the column which is the ID which Ambar will partition message sequences by. | 
+**AdditionalColumns** | **string** | A case sensitive, comma separated list string of columns which Ambar should read from the database. The ordering should be consistent with the table from which Ambar will read. | 
 
 ## Methods
 
 ### NewPostgresDataSource
 
-`func NewPostgresDataSource(username string, password string, hostname string, hostPort string, databaseName string, tableName string, publicationName string, columnNames string, sequenceNumColumn string, sequenceIdColumn string, ) *PostgresDataSource`
+`func NewPostgresDataSource(hostname string, hostPort string, databaseName string, tableName string, publicationName string, additionalColumns string, ) *PostgresDataSource`
 
 NewPostgresDataSource instantiates a new PostgresDataSource object
 This constructor will assign default values to properties that have it defined,
@@ -33,46 +29,6 @@ will change when the set of required properties is changed
 NewPostgresDataSourceWithDefaults instantiates a new PostgresDataSource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetUsername
-
-`func (o *PostgresDataSource) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *PostgresDataSource) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *PostgresDataSource) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-
-### GetPassword
-
-`func (o *PostgresDataSource) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *PostgresDataSource) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *PostgresDataSource) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
 
 ### GetHostname
 
@@ -174,64 +130,24 @@ and a boolean to check if the value has been set.
 SetPublicationName sets PublicationName field to given value.
 
 
-### GetColumnNames
+### GetAdditionalColumns
 
-`func (o *PostgresDataSource) GetColumnNames() string`
+`func (o *PostgresDataSource) GetAdditionalColumns() string`
 
-GetColumnNames returns the ColumnNames field if non-nil, zero value otherwise.
+GetAdditionalColumns returns the AdditionalColumns field if non-nil, zero value otherwise.
 
-### GetColumnNamesOk
+### GetAdditionalColumnsOk
 
-`func (o *PostgresDataSource) GetColumnNamesOk() (*string, bool)`
+`func (o *PostgresDataSource) GetAdditionalColumnsOk() (*string, bool)`
 
-GetColumnNamesOk returns a tuple with the ColumnNames field if it's non-nil, zero value otherwise
+GetAdditionalColumnsOk returns a tuple with the AdditionalColumns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetColumnNames
+### SetAdditionalColumns
 
-`func (o *PostgresDataSource) SetColumnNames(v string)`
+`func (o *PostgresDataSource) SetAdditionalColumns(v string)`
 
-SetColumnNames sets ColumnNames field to given value.
-
-
-### GetSequenceNumColumn
-
-`func (o *PostgresDataSource) GetSequenceNumColumn() string`
-
-GetSequenceNumColumn returns the SequenceNumColumn field if non-nil, zero value otherwise.
-
-### GetSequenceNumColumnOk
-
-`func (o *PostgresDataSource) GetSequenceNumColumnOk() (*string, bool)`
-
-GetSequenceNumColumnOk returns a tuple with the SequenceNumColumn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSequenceNumColumn
-
-`func (o *PostgresDataSource) SetSequenceNumColumn(v string)`
-
-SetSequenceNumColumn sets SequenceNumColumn field to given value.
-
-
-### GetSequenceIdColumn
-
-`func (o *PostgresDataSource) GetSequenceIdColumn() string`
-
-GetSequenceIdColumn returns the SequenceIdColumn field if non-nil, zero value otherwise.
-
-### GetSequenceIdColumnOk
-
-`func (o *PostgresDataSource) GetSequenceIdColumnOk() (*string, bool)`
-
-GetSequenceIdColumnOk returns a tuple with the SequenceIdColumn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSequenceIdColumn
-
-`func (o *PostgresDataSource) SetSequenceIdColumn(v string)`
-
-SetSequenceIdColumn sets SequenceIdColumn field to given value.
+SetAdditionalColumns sets AdditionalColumns field to given value.
 
 
 

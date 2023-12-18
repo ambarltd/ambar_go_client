@@ -20,19 +20,29 @@ var _ MappedNullable = &CreateDataSourceRequest{}
 
 // CreateDataSourceRequest The request properties for creating an Ambar Data Source.
 type CreateDataSourceRequest struct {
-	DataSourceConfig CreateDataSourceRequestDataSourceConfig `json:"dataSourceConfig"`
 	// A case-insensitive string value describing the type of durable storage system you wish to connect to your Ambar environment. See supported DataSourceTypes in our developer docs for more details on valid values.
 	DataSourceType string `json:"dataSourceType"`
+	// A description for identifying this DataSource.
+	Description *string `json:"description,omitempty"`
+	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
+	Username *string `json:"username,omitempty"`
+	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
+	Password *string `json:"password,omitempty"`
+	// The name of a column which monotonically increases on database writes.
+	SerialColumn *string `json:"serialColumn,omitempty"`
+	// A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records.
+	PartitioningColumn *string `json:"partitioningColumn,omitempty"`
+	DataSourceConfig CreateDataSourceRequestDataSourceConfig `json:"dataSourceConfig"`
 }
 
 // NewCreateDataSourceRequest instantiates a new CreateDataSourceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDataSourceRequest(dataSourceConfig CreateDataSourceRequestDataSourceConfig, dataSourceType string) *CreateDataSourceRequest {
+func NewCreateDataSourceRequest(dataSourceType string, dataSourceConfig CreateDataSourceRequestDataSourceConfig) *CreateDataSourceRequest {
 	this := CreateDataSourceRequest{}
-	this.DataSourceConfig = dataSourceConfig
 	this.DataSourceType = dataSourceType
+	this.DataSourceConfig = dataSourceConfig
 	return &this
 }
 
@@ -42,30 +52,6 @@ func NewCreateDataSourceRequest(dataSourceConfig CreateDataSourceRequestDataSour
 func NewCreateDataSourceRequestWithDefaults() *CreateDataSourceRequest {
 	this := CreateDataSourceRequest{}
 	return &this
-}
-
-// GetDataSourceConfig returns the DataSourceConfig field value
-func (o *CreateDataSourceRequest) GetDataSourceConfig() CreateDataSourceRequestDataSourceConfig {
-	if o == nil {
-		var ret CreateDataSourceRequestDataSourceConfig
-		return ret
-	}
-
-	return o.DataSourceConfig
-}
-
-// GetDataSourceConfigOk returns a tuple with the DataSourceConfig field value
-// and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*CreateDataSourceRequestDataSourceConfig, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DataSourceConfig, true
-}
-
-// SetDataSourceConfig sets field value
-func (o *CreateDataSourceRequest) SetDataSourceConfig(v CreateDataSourceRequestDataSourceConfig) {
-	o.DataSourceConfig = v
 }
 
 // GetDataSourceType returns the DataSourceType field value
@@ -92,6 +78,190 @@ func (o *CreateDataSourceRequest) SetDataSourceType(v string) {
 	o.DataSourceType = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateDataSourceRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateDataSourceRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateDataSourceRequest) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateDataSourceRequest) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateDataSourceRequest) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateDataSourceRequest) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *CreateDataSourceRequest) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateDataSourceRequest) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *CreateDataSourceRequest) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetSerialColumn returns the SerialColumn field value if set, zero value otherwise.
+func (o *CreateDataSourceRequest) GetSerialColumn() string {
+	if o == nil || IsNil(o.SerialColumn) {
+		var ret string
+		return ret
+	}
+	return *o.SerialColumn
+}
+
+// GetSerialColumnOk returns a tuple with the SerialColumn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetSerialColumnOk() (*string, bool) {
+	if o == nil || IsNil(o.SerialColumn) {
+		return nil, false
+	}
+	return o.SerialColumn, true
+}
+
+// HasSerialColumn returns a boolean if a field has been set.
+func (o *CreateDataSourceRequest) HasSerialColumn() bool {
+	if o != nil && !IsNil(o.SerialColumn) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialColumn gets a reference to the given string and assigns it to the SerialColumn field.
+func (o *CreateDataSourceRequest) SetSerialColumn(v string) {
+	o.SerialColumn = &v
+}
+
+// GetPartitioningColumn returns the PartitioningColumn field value if set, zero value otherwise.
+func (o *CreateDataSourceRequest) GetPartitioningColumn() string {
+	if o == nil || IsNil(o.PartitioningColumn) {
+		var ret string
+		return ret
+	}
+	return *o.PartitioningColumn
+}
+
+// GetPartitioningColumnOk returns a tuple with the PartitioningColumn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetPartitioningColumnOk() (*string, bool) {
+	if o == nil || IsNil(o.PartitioningColumn) {
+		return nil, false
+	}
+	return o.PartitioningColumn, true
+}
+
+// HasPartitioningColumn returns a boolean if a field has been set.
+func (o *CreateDataSourceRequest) HasPartitioningColumn() bool {
+	if o != nil && !IsNil(o.PartitioningColumn) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartitioningColumn gets a reference to the given string and assigns it to the PartitioningColumn field.
+func (o *CreateDataSourceRequest) SetPartitioningColumn(v string) {
+	o.PartitioningColumn = &v
+}
+
+// GetDataSourceConfig returns the DataSourceConfig field value
+func (o *CreateDataSourceRequest) GetDataSourceConfig() CreateDataSourceRequestDataSourceConfig {
+	if o == nil {
+		var ret CreateDataSourceRequestDataSourceConfig
+		return ret
+	}
+
+	return o.DataSourceConfig
+}
+
+// GetDataSourceConfigOk returns a tuple with the DataSourceConfig field value
+// and a boolean to check if the value has been set.
+func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*CreateDataSourceRequestDataSourceConfig, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DataSourceConfig, true
+}
+
+// SetDataSourceConfig sets field value
+func (o *CreateDataSourceRequest) SetDataSourceConfig(v CreateDataSourceRequestDataSourceConfig) {
+	o.DataSourceConfig = v
+}
+
 func (o CreateDataSourceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,8 +272,23 @@ func (o CreateDataSourceRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateDataSourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["dataSourceConfig"] = o.DataSourceConfig
 	toSerialize["dataSourceType"] = o.DataSourceType
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.SerialColumn) {
+		toSerialize["serialColumn"] = o.SerialColumn
+	}
+	if !IsNil(o.PartitioningColumn) {
+		toSerialize["partitioningColumn"] = o.PartitioningColumn
+	}
+	toSerialize["dataSourceConfig"] = o.DataSourceConfig
 	return toSerialize, nil
 }
 

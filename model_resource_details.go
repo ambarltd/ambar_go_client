@@ -21,6 +21,7 @@ var _ MappedNullable = &ResourceDetails{}
 // ResourceDetails struct for ResourceDetails
 type ResourceDetails struct {
 	ResourceId *string `json:"resourceId,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ResourceState *string `json:"resourceState,omitempty"`
 	CreatedAt *string `json:"createdAt,omitempty"`
 	LastUpdated *string `json:"lastUpdated,omitempty"`
@@ -73,6 +74,38 @@ func (o *ResourceDetails) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *ResourceDetails) SetResourceId(v string) {
 	o.ResourceId = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ResourceDetails) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceDetails) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ResourceDetails) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ResourceDetails) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetResourceState returns the ResourceState field value if set, zero value otherwise.
@@ -183,6 +216,9 @@ func (o ResourceDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ResourceId) {
 		toSerialize["resourceId"] = o.ResourceId
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.ResourceState) {
 		toSerialize["resourceState"] = o.ResourceState

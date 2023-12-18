@@ -28,6 +28,8 @@ type Filter struct {
 	DataSourcesInFilter []string `json:"dataSourcesInFilter,omitempty"`
 	// The Ambar resourceId corresponding to this Filter.
 	ResourceId *string `json:"resourceId,omitempty"`
+	// The description of the Filter given when it was created.
+	Description *string `json:"description,omitempty"`
 	// The ResourceState of this Filter. For possible values see ResourceState in our developer docs.
 	State *string `json:"state,omitempty"`
 }
@@ -177,6 +179,38 @@ func (o *Filter) SetResourceId(v string) {
 	o.ResourceId = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Filter) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Filter) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Filter) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Filter) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *Filter) GetState() string {
 	if o == nil || IsNil(o.State) {
@@ -230,6 +264,9 @@ func (o Filter) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ResourceId) {
 		toSerialize["resourceId"] = o.ResourceId
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State

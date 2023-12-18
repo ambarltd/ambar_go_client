@@ -22,7 +22,7 @@ var _ MappedNullable = &ResourceTypeDetails{}
 type ResourceTypeDetails struct {
 	ResourceType *string `json:"resourceType,omitempty"`
 	Limit *ResourceTypeDetailsLimit `json:"limit,omitempty"`
-	Resources []ResourceDetails `json:"resources,omitempty"`
+	Details []ResourceDetails `json:"details,omitempty"`
 }
 
 // NewResourceTypeDetails instantiates a new ResourceTypeDetails object
@@ -106,36 +106,36 @@ func (o *ResourceTypeDetails) SetLimit(v ResourceTypeDetailsLimit) {
 	o.Limit = &v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise.
-func (o *ResourceTypeDetails) GetResources() []ResourceDetails {
-	if o == nil || IsNil(o.Resources) {
+// GetDetails returns the Details field value if set, zero value otherwise.
+func (o *ResourceTypeDetails) GetDetails() []ResourceDetails {
+	if o == nil || IsNil(o.Details) {
 		var ret []ResourceDetails
 		return ret
 	}
-	return o.Resources
+	return o.Details
 }
 
-// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceTypeDetails) GetResourcesOk() ([]ResourceDetails, bool) {
-	if o == nil || IsNil(o.Resources) {
+func (o *ResourceTypeDetails) GetDetailsOk() ([]ResourceDetails, bool) {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
-	return o.Resources, true
+	return o.Details, true
 }
 
-// HasResources returns a boolean if a field has been set.
-func (o *ResourceTypeDetails) HasResources() bool {
-	if o != nil && !IsNil(o.Resources) {
+// HasDetails returns a boolean if a field has been set.
+func (o *ResourceTypeDetails) HasDetails() bool {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
 	return false
 }
 
-// SetResources gets a reference to the given []ResourceDetails and assigns it to the Resources field.
-func (o *ResourceTypeDetails) SetResources(v []ResourceDetails) {
-	o.Resources = v
+// SetDetails gets a reference to the given []ResourceDetails and assigns it to the Details field.
+func (o *ResourceTypeDetails) SetDetails(v []ResourceDetails) {
+	o.Details = v
 }
 
 func (o ResourceTypeDetails) MarshalJSON() ([]byte, error) {
@@ -154,8 +154,8 @@ func (o ResourceTypeDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Limit) {
 		toSerialize["limit"] = o.Limit
 	}
-	if !IsNil(o.Resources) {
-		toSerialize["resources"] = o.Resources
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
 	}
 	return toSerialize, nil
 }

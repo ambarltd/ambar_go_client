@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceType** | Pointer to **string** |  | [optional] 
 **Limit** | Pointer to [**ResourceTypeDetailsLimit**](ResourceTypeDetailsLimit.md) |  | [optional] 
-**Resources** | Pointer to [**[]ResourceDetails**](ResourceDetails.md) |  | [optional] 
+**Details** | Pointer to [**[]ResourceDetails**](ResourceDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -77,30 +77,30 @@ SetLimit sets Limit field to given value.
 
 HasLimit returns a boolean if a field has been set.
 
-### GetResources
+### GetDetails
 
-`func (o *ResourceTypeDetails) GetResources() []ResourceDetails`
+`func (o *ResourceTypeDetails) GetDetails() []ResourceDetails`
 
-GetResources returns the Resources field if non-nil, zero value otherwise.
+GetDetails returns the Details field if non-nil, zero value otherwise.
 
-### GetResourcesOk
+### GetDetailsOk
 
-`func (o *ResourceTypeDetails) GetResourcesOk() (*[]ResourceDetails, bool)`
+`func (o *ResourceTypeDetails) GetDetailsOk() (*[]ResourceDetails, bool)`
 
-GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResources
+### SetDetails
 
-`func (o *ResourceTypeDetails) SetResources(v []ResourceDetails)`
+`func (o *ResourceTypeDetails) SetDetails(v []ResourceDetails)`
 
-SetResources sets Resources field to given value.
+SetDetails sets Details field to given value.
 
-### HasResources
+### HasDetails
 
-`func (o *ResourceTypeDetails) HasResources() bool`
+`func (o *ResourceTypeDetails) HasDetails() bool`
 
-HasResources returns a boolean if a field has been set.
+HasDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

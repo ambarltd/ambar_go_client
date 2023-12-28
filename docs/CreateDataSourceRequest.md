@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 **SerialColumn** | **string** | The name of a column which monotonically increases on database writes. | 
 **PartitioningColumn** | **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | 
-**DataSourceConfig** | [**CreateDataSourceRequestDataSourceConfig**](CreateDataSourceRequestDataSourceConfig.md) |  | 
+**DataSourceConfig** | **map[string]string** | A object containing inputs which are specific depending on the type of DataSource being created. See out developer docs for supported DataSourceTypes and corresponding configurations. | 
 
 ## Methods
 
 ### NewCreateDataSourceRequest
 
-`func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig CreateDataSourceRequestDataSourceConfig, ) *CreateDataSourceRequest`
+`func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig map[string]string, ) *CreateDataSourceRequest`
 
 NewCreateDataSourceRequest instantiates a new CreateDataSourceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -158,20 +158,20 @@ SetPartitioningColumn sets PartitioningColumn field to given value.
 
 ### GetDataSourceConfig
 
-`func (o *CreateDataSourceRequest) GetDataSourceConfig() CreateDataSourceRequestDataSourceConfig`
+`func (o *CreateDataSourceRequest) GetDataSourceConfig() map[string]string`
 
 GetDataSourceConfig returns the DataSourceConfig field if non-nil, zero value otherwise.
 
 ### GetDataSourceConfigOk
 
-`func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*CreateDataSourceRequestDataSourceConfig, bool)`
+`func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*map[string]string, bool)`
 
 GetDataSourceConfigOk returns a tuple with the DataSourceConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataSourceConfig
 
-`func (o *CreateDataSourceRequest) SetDataSourceConfig(v CreateDataSourceRequestDataSourceConfig)`
+`func (o *CreateDataSourceRequest) SetDataSourceConfig(v map[string]string)`
 
 SetDataSourceConfig sets DataSourceConfig field to given value.
 

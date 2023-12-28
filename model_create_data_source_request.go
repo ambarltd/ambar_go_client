@@ -32,14 +32,15 @@ type CreateDataSourceRequest struct {
 	SerialColumn string `json:"serialColumn"`
 	// A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records.
 	PartitioningColumn string `json:"partitioningColumn"`
-	DataSourceConfig CreateDataSourceRequestDataSourceConfig `json:"dataSourceConfig"`
+	// A object containing inputs which are specific depending on the type of DataSource being created. See out developer docs for supported DataSourceTypes and corresponding configurations.
+	DataSourceConfig map[string]string `json:"dataSourceConfig"`
 }
 
 // NewCreateDataSourceRequest instantiates a new CreateDataSourceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig CreateDataSourceRequestDataSourceConfig) *CreateDataSourceRequest {
+func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig map[string]string) *CreateDataSourceRequest {
 	this := CreateDataSourceRequest{}
 	this.DataSourceType = dataSourceType
 	this.Username = username
@@ -211,9 +212,9 @@ func (o *CreateDataSourceRequest) SetPartitioningColumn(v string) {
 }
 
 // GetDataSourceConfig returns the DataSourceConfig field value
-func (o *CreateDataSourceRequest) GetDataSourceConfig() CreateDataSourceRequestDataSourceConfig {
+func (o *CreateDataSourceRequest) GetDataSourceConfig() map[string]string {
 	if o == nil {
-		var ret CreateDataSourceRequestDataSourceConfig
+		var ret map[string]string
 		return ret
 	}
 
@@ -222,7 +223,7 @@ func (o *CreateDataSourceRequest) GetDataSourceConfig() CreateDataSourceRequestD
 
 // GetDataSourceConfigOk returns a tuple with the DataSourceConfig field value
 // and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*CreateDataSourceRequestDataSourceConfig, bool) {
+func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*map[string]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -230,7 +231,7 @@ func (o *CreateDataSourceRequest) GetDataSourceConfigOk() (*CreateDataSourceRequ
 }
 
 // SetDataSourceConfig sets field value
-func (o *CreateDataSourceRequest) SetDataSourceConfig(v CreateDataSourceRequestDataSourceConfig) {
+func (o *CreateDataSourceRequest) SetDataSourceConfig(v map[string]string) {
 	o.DataSourceConfig = v
 }
 

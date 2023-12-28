@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest("DataSourceType_example", "Username_example", "Password_example", "SerialColumn_example", "PartitioningColumn_example", openapiclient.CreateDataSourceRequest_dataSourceConfig{PostgresDataSource: openapiclient.NewPostgresDataSource("Hostname_example", "HostPort_example", "DatabaseName_example", "TableName_example", "PublicationName_example", "AdditionalColumns_example")}) // CreateDataSourceRequest | 
+    createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest("DataSourceType_example", "Username_example", "Password_example", "SerialColumn_example", "PartitioningColumn_example", map[string]string{"key": "Inner_example"}) // CreateDataSourceRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

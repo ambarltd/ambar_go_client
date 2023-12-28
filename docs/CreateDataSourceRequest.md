@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DataSourceType** | **string** | A case-insensitive string value describing the type of durable storage system you wish to connect to your Ambar environment. See supported DataSourceTypes in our developer docs for more details on valid values. | 
 **Description** | Pointer to **string** | A description for identifying this DataSource. | [optional] 
-**Username** | Pointer to **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | [optional] 
-**Password** | Pointer to **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | [optional] 
-**SerialColumn** | Pointer to **string** | The name of a column which monotonically increases on database writes. | [optional] 
-**PartitioningColumn** | Pointer to **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | [optional] 
+**Username** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
+**Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
+**SerialColumn** | **string** | The name of a column which monotonically increases on database writes. | 
+**PartitioningColumn** | **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | 
 **DataSourceConfig** | [**CreateDataSourceRequestDataSourceConfig**](CreateDataSourceRequestDataSourceConfig.md) |  | 
 
 ## Methods
 
 ### NewCreateDataSourceRequest
 
-`func NewCreateDataSourceRequest(dataSourceType string, dataSourceConfig CreateDataSourceRequestDataSourceConfig, ) *CreateDataSourceRequest`
+`func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig CreateDataSourceRequestDataSourceConfig, ) *CreateDataSourceRequest`
 
 NewCreateDataSourceRequest instantiates a new CreateDataSourceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -95,11 +95,6 @@ and a boolean to check if the value has been set.
 
 SetUsername sets Username field to given value.
 
-### HasUsername
-
-`func (o *CreateDataSourceRequest) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetPassword
 
@@ -120,11 +115,6 @@ and a boolean to check if the value has been set.
 
 SetPassword sets Password field to given value.
 
-### HasPassword
-
-`func (o *CreateDataSourceRequest) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
 
 ### GetSerialColumn
 
@@ -145,11 +135,6 @@ and a boolean to check if the value has been set.
 
 SetSerialColumn sets SerialColumn field to given value.
 
-### HasSerialColumn
-
-`func (o *CreateDataSourceRequest) HasSerialColumn() bool`
-
-HasSerialColumn returns a boolean if a field has been set.
 
 ### GetPartitioningColumn
 
@@ -170,11 +155,6 @@ and a boolean to check if the value has been set.
 
 SetPartitioningColumn sets PartitioningColumn field to given value.
 
-### HasPartitioningColumn
-
-`func (o *CreateDataSourceRequest) HasPartitioningColumn() bool`
-
-HasPartitioningColumn returns a boolean if a field has been set.
 
 ### GetDataSourceConfig
 

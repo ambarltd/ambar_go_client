@@ -20,16 +20,18 @@ var _ MappedNullable = &ResourceStateChangeResponse{}
 
 // ResourceStateChangeResponse struct for ResourceStateChangeResponse
 type ResourceStateChangeResponse struct {
-	ResourceId *string `json:"resourceId,omitempty"`
-	ResourceState *string `json:"resourceState,omitempty"`
+	ResourceId string `json:"resourceId"`
+	ResourceState string `json:"resourceState"`
 }
 
 // NewResourceStateChangeResponse instantiates a new ResourceStateChangeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceStateChangeResponse() *ResourceStateChangeResponse {
+func NewResourceStateChangeResponse(resourceId string, resourceState string) *ResourceStateChangeResponse {
 	this := ResourceStateChangeResponse{}
+	this.ResourceId = resourceId
+	this.ResourceState = resourceState
 	return &this
 }
 
@@ -41,68 +43,52 @@ func NewResourceStateChangeResponseWithDefaults() *ResourceStateChangeResponse {
 	return &this
 }
 
-// GetResourceId returns the ResourceId field value if set, zero value otherwise.
+// GetResourceId returns the ResourceId field value
 func (o *ResourceStateChangeResponse) GetResourceId() string {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceId
+
+	return o.ResourceId
 }
 
-// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// GetResourceIdOk returns a tuple with the ResourceId field value
 // and a boolean to check if the value has been set.
 func (o *ResourceStateChangeResponse) GetResourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceId, true
+	return &o.ResourceId, true
 }
 
-// HasResourceId returns a boolean if a field has been set.
-func (o *ResourceStateChangeResponse) HasResourceId() bool {
-	if o != nil && !IsNil(o.ResourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+// SetResourceId sets field value
 func (o *ResourceStateChangeResponse) SetResourceId(v string) {
-	o.ResourceId = &v
+	o.ResourceId = v
 }
 
-// GetResourceState returns the ResourceState field value if set, zero value otherwise.
+// GetResourceState returns the ResourceState field value
 func (o *ResourceStateChangeResponse) GetResourceState() string {
-	if o == nil || IsNil(o.ResourceState) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceState
+
+	return o.ResourceState
 }
 
-// GetResourceStateOk returns a tuple with the ResourceState field value if set, nil otherwise
+// GetResourceStateOk returns a tuple with the ResourceState field value
 // and a boolean to check if the value has been set.
 func (o *ResourceStateChangeResponse) GetResourceStateOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceState) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceState, true
+	return &o.ResourceState, true
 }
 
-// HasResourceState returns a boolean if a field has been set.
-func (o *ResourceStateChangeResponse) HasResourceState() bool {
-	if o != nil && !IsNil(o.ResourceState) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceState gets a reference to the given string and assigns it to the ResourceState field.
+// SetResourceState sets field value
 func (o *ResourceStateChangeResponse) SetResourceState(v string) {
-	o.ResourceState = &v
+	o.ResourceState = v
 }
 
 func (o ResourceStateChangeResponse) MarshalJSON() ([]byte, error) {
@@ -115,12 +101,8 @@ func (o ResourceStateChangeResponse) MarshalJSON() ([]byte, error) {
 
 func (o ResourceStateChangeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ResourceId) {
-		toSerialize["resourceId"] = o.ResourceId
-	}
-	if !IsNil(o.ResourceState) {
-		toSerialize["resourceState"] = o.ResourceState
-	}
+	toSerialize["resourceId"] = o.ResourceId
+	toSerialize["resourceState"] = o.ResourceState
 	return toSerialize, nil
 }
 

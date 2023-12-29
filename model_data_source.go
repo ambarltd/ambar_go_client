@@ -21,23 +21,28 @@ var _ MappedNullable = &DataSource{}
 // DataSource The properties describing an Ambar Data Source.
 type DataSource struct {
 	// The UTC time at which the DataSource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt string `json:"createdAt"`
 	// The properties describing the configuration details for the given DataSourceType.
-	DataSourceConfig map[string]interface{} `json:"dataSourceConfig,omitempty"`
+	DataSourceConfig map[string]interface{} `json:"dataSourceConfig"`
 	// The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from.
-	DataSourceType *string `json:"dataSourceType,omitempty"`
+	DataSourceType string `json:"dataSourceType"`
 	// The Ambar resourceId corresponding to this DataSource.
-	ResourceId *string `json:"resourceId,omitempty"`
+	ResourceId string `json:"resourceId"`
 	// The ResourceState of this DataSource. For possible values see ResourceState in our developer docs.
-	State *string `json:"state,omitempty"`
+	State string `json:"state"`
 }
 
 // NewDataSource instantiates a new DataSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataSource() *DataSource {
+func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string) *DataSource {
 	this := DataSource{}
+	this.CreatedAt = createdAt
+	this.DataSourceConfig = dataSourceConfig
+	this.DataSourceType = dataSourceType
+	this.ResourceId = resourceId
+	this.State = state
 	return &this
 }
 
@@ -49,164 +54,124 @@ func NewDataSourceWithDefaults() *DataSource {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *DataSource) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DataSource) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *DataSource) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *DataSource) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetDataSourceConfig returns the DataSourceConfig field value if set, zero value otherwise.
+// GetDataSourceConfig returns the DataSourceConfig field value
 func (o *DataSource) GetDataSourceConfig() map[string]interface{} {
-	if o == nil || IsNil(o.DataSourceConfig) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
+
 	return o.DataSourceConfig
 }
 
-// GetDataSourceConfigOk returns a tuple with the DataSourceConfig field value if set, nil otherwise
+// GetDataSourceConfigOk returns a tuple with the DataSourceConfig field value
 // and a boolean to check if the value has been set.
 func (o *DataSource) GetDataSourceConfigOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DataSourceConfig) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.DataSourceConfig, true
 }
 
-// HasDataSourceConfig returns a boolean if a field has been set.
-func (o *DataSource) HasDataSourceConfig() bool {
-	if o != nil && !IsNil(o.DataSourceConfig) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataSourceConfig gets a reference to the given map[string]interface{} and assigns it to the DataSourceConfig field.
+// SetDataSourceConfig sets field value
 func (o *DataSource) SetDataSourceConfig(v map[string]interface{}) {
 	o.DataSourceConfig = v
 }
 
-// GetDataSourceType returns the DataSourceType field value if set, zero value otherwise.
+// GetDataSourceType returns the DataSourceType field value
 func (o *DataSource) GetDataSourceType() string {
-	if o == nil || IsNil(o.DataSourceType) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DataSourceType
+
+	return o.DataSourceType
 }
 
-// GetDataSourceTypeOk returns a tuple with the DataSourceType field value if set, nil otherwise
+// GetDataSourceTypeOk returns a tuple with the DataSourceType field value
 // and a boolean to check if the value has been set.
 func (o *DataSource) GetDataSourceTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.DataSourceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DataSourceType, true
+	return &o.DataSourceType, true
 }
 
-// HasDataSourceType returns a boolean if a field has been set.
-func (o *DataSource) HasDataSourceType() bool {
-	if o != nil && !IsNil(o.DataSourceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataSourceType gets a reference to the given string and assigns it to the DataSourceType field.
+// SetDataSourceType sets field value
 func (o *DataSource) SetDataSourceType(v string) {
-	o.DataSourceType = &v
+	o.DataSourceType = v
 }
 
-// GetResourceId returns the ResourceId field value if set, zero value otherwise.
+// GetResourceId returns the ResourceId field value
 func (o *DataSource) GetResourceId() string {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceId
+
+	return o.ResourceId
 }
 
-// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// GetResourceIdOk returns a tuple with the ResourceId field value
 // and a boolean to check if the value has been set.
 func (o *DataSource) GetResourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceId, true
+	return &o.ResourceId, true
 }
 
-// HasResourceId returns a boolean if a field has been set.
-func (o *DataSource) HasResourceId() bool {
-	if o != nil && !IsNil(o.ResourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+// SetResourceId sets field value
 func (o *DataSource) SetResourceId(v string) {
-	o.ResourceId = &v
+	o.ResourceId = v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value
 func (o *DataSource) GetState() string {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.State
+
+	return o.State
 }
 
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 func (o *DataSource) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return &o.State, true
 }
 
-// HasState returns a boolean if a field has been set.
-func (o *DataSource) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given string and assigns it to the State field.
+// SetState sets field value
 func (o *DataSource) SetState(v string) {
-	o.State = &v
+	o.State = v
 }
 
 func (o DataSource) MarshalJSON() ([]byte, error) {
@@ -219,21 +184,11 @@ func (o DataSource) MarshalJSON() ([]byte, error) {
 
 func (o DataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.DataSourceConfig) {
-		toSerialize["dataSourceConfig"] = o.DataSourceConfig
-	}
-	if !IsNil(o.DataSourceType) {
-		toSerialize["dataSourceType"] = o.DataSourceType
-	}
-	if !IsNil(o.ResourceId) {
-		toSerialize["resourceId"] = o.ResourceId
-	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["dataSourceConfig"] = o.DataSourceConfig
+	toSerialize["dataSourceType"] = o.DataSourceType
+	toSerialize["resourceId"] = o.ResourceId
+	toSerialize["state"] = o.State
 	return toSerialize, nil
 }
 

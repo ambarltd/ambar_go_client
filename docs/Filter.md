@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **string** | The UTC time at which the Filter was created. | [optional] 
-**DataDestinationsUsingFilter** | Pointer to **[]string** | The list of DataDestination ResourceIds which use this Filter. | [optional] 
-**DataSourcesInFilter** | Pointer to **[]string** | The list of DataSource ResourceIds which this Filter will read from. | [optional] 
-**ResourceId** | Pointer to **string** | The Ambar resourceId corresponding to this Filter. | [optional] 
+**CreatedAt** | **string** | The UTC time at which the Filter was created. | 
+**DataDestinationsUsingFilter** | **[]string** | The list of DataDestination ResourceIds which use this Filter. | 
+**DataSourceId** | **[]string** | The DataSource ResourceId which this Filter will read from. | 
+**ResourceId** | **string** | The Ambar resourceId corresponding to this Filter. | 
 **Description** | Pointer to **string** | The description of the Filter given when it was created. | [optional] 
-**State** | Pointer to **string** | The ResourceState of this Filter. For possible values see ResourceState in our developer docs. | [optional] 
+**State** | **string** | The ResourceState of this Filter. For possible values see ResourceState in our developer docs. | 
 
 ## Methods
 
 ### NewFilter
 
-`func NewFilter() *Filter`
+`func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId []string, resourceId string, state string, ) *Filter`
 
 NewFilter instantiates a new Filter object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *Filter) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDataDestinationsUsingFilter
 
@@ -74,36 +69,26 @@ and a boolean to check if the value has been set.
 
 SetDataDestinationsUsingFilter sets DataDestinationsUsingFilter field to given value.
 
-### HasDataDestinationsUsingFilter
 
-`func (o *Filter) HasDataDestinationsUsingFilter() bool`
+### GetDataSourceId
 
-HasDataDestinationsUsingFilter returns a boolean if a field has been set.
+`func (o *Filter) GetDataSourceId() []string`
 
-### GetDataSourcesInFilter
+GetDataSourceId returns the DataSourceId field if non-nil, zero value otherwise.
 
-`func (o *Filter) GetDataSourcesInFilter() []string`
+### GetDataSourceIdOk
 
-GetDataSourcesInFilter returns the DataSourcesInFilter field if non-nil, zero value otherwise.
+`func (o *Filter) GetDataSourceIdOk() (*[]string, bool)`
 
-### GetDataSourcesInFilterOk
-
-`func (o *Filter) GetDataSourcesInFilterOk() (*[]string, bool)`
-
-GetDataSourcesInFilterOk returns a tuple with the DataSourcesInFilter field if it's non-nil, zero value otherwise
+GetDataSourceIdOk returns a tuple with the DataSourceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDataSourcesInFilter
+### SetDataSourceId
 
-`func (o *Filter) SetDataSourcesInFilter(v []string)`
+`func (o *Filter) SetDataSourceId(v []string)`
 
-SetDataSourcesInFilter sets DataSourcesInFilter field to given value.
+SetDataSourceId sets DataSourceId field to given value.
 
-### HasDataSourcesInFilter
-
-`func (o *Filter) HasDataSourcesInFilter() bool`
-
-HasDataSourcesInFilter returns a boolean if a field has been set.
 
 ### GetResourceId
 
@@ -124,11 +109,6 @@ and a boolean to check if the value has been set.
 
 SetResourceId sets ResourceId field to given value.
 
-### HasResourceId
-
-`func (o *Filter) HasResourceId() bool`
-
-HasResourceId returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -174,11 +154,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-### HasState
-
-`func (o *Filter) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

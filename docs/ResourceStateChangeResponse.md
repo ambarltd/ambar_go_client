@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ResourceId** | Pointer to **string** |  | [optional] 
-**ResourceState** | Pointer to **string** |  | [optional] 
+**ResourceId** | **string** |  | 
+**ResourceState** | **string** |  | 
 
 ## Methods
 
 ### NewResourceStateChangeResponse
 
-`func NewResourceStateChangeResponse() *ResourceStateChangeResponse`
+`func NewResourceStateChangeResponse(resourceId string, resourceState string, ) *ResourceStateChangeResponse`
 
 NewResourceStateChangeResponse instantiates a new ResourceStateChangeResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetResourceId sets ResourceId field to given value.
 
-### HasResourceId
-
-`func (o *ResourceStateChangeResponse) HasResourceId() bool`
-
-HasResourceId returns a boolean if a field has been set.
 
 ### GetResourceState
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetResourceState sets ResourceState field to given value.
 
-### HasResourceState
-
-`func (o *ResourceStateChangeResponse) HasResourceState() bool`
-
-HasResourceState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

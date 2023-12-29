@@ -21,25 +21,30 @@ var _ MappedNullable = &Filter{}
 // Filter The properties describing an Ambar Filter.
 type Filter struct {
 	// The UTC time at which the Filter was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt string `json:"createdAt"`
 	// The list of DataDestination ResourceIds which use this Filter.
-	DataDestinationsUsingFilter []string `json:"dataDestinationsUsingFilter,omitempty"`
-	// The list of DataSource ResourceIds which this Filter will read from.
-	DataSourcesInFilter []string `json:"dataSourcesInFilter,omitempty"`
+	DataDestinationsUsingFilter []string `json:"dataDestinationsUsingFilter"`
+	// The DataSource ResourceId which this Filter will read from.
+	DataSourceId []string `json:"dataSourceId"`
 	// The Ambar resourceId corresponding to this Filter.
-	ResourceId *string `json:"resourceId,omitempty"`
+	ResourceId string `json:"resourceId"`
 	// The description of the Filter given when it was created.
 	Description *string `json:"description,omitempty"`
 	// The ResourceState of this Filter. For possible values see ResourceState in our developer docs.
-	State *string `json:"state,omitempty"`
+	State string `json:"state"`
 }
 
 // NewFilter instantiates a new Filter object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFilter() *Filter {
+func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId []string, resourceId string, state string) *Filter {
 	this := Filter{}
+	this.CreatedAt = createdAt
+	this.DataDestinationsUsingFilter = dataDestinationsUsingFilter
+	this.DataSourceId = dataSourceId
+	this.ResourceId = resourceId
+	this.State = state
 	return &this
 }
 
@@ -51,132 +56,100 @@ func NewFilterWithDefaults() *Filter {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *Filter) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Filter) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Filter) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *Filter) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetDataDestinationsUsingFilter returns the DataDestinationsUsingFilter field value if set, zero value otherwise.
+// GetDataDestinationsUsingFilter returns the DataDestinationsUsingFilter field value
 func (o *Filter) GetDataDestinationsUsingFilter() []string {
-	if o == nil || IsNil(o.DataDestinationsUsingFilter) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.DataDestinationsUsingFilter
 }
 
-// GetDataDestinationsUsingFilterOk returns a tuple with the DataDestinationsUsingFilter field value if set, nil otherwise
+// GetDataDestinationsUsingFilterOk returns a tuple with the DataDestinationsUsingFilter field value
 // and a boolean to check if the value has been set.
 func (o *Filter) GetDataDestinationsUsingFilterOk() ([]string, bool) {
-	if o == nil || IsNil(o.DataDestinationsUsingFilter) {
+	if o == nil {
 		return nil, false
 	}
 	return o.DataDestinationsUsingFilter, true
 }
 
-// HasDataDestinationsUsingFilter returns a boolean if a field has been set.
-func (o *Filter) HasDataDestinationsUsingFilter() bool {
-	if o != nil && !IsNil(o.DataDestinationsUsingFilter) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataDestinationsUsingFilter gets a reference to the given []string and assigns it to the DataDestinationsUsingFilter field.
+// SetDataDestinationsUsingFilter sets field value
 func (o *Filter) SetDataDestinationsUsingFilter(v []string) {
 	o.DataDestinationsUsingFilter = v
 }
 
-// GetDataSourcesInFilter returns the DataSourcesInFilter field value if set, zero value otherwise.
-func (o *Filter) GetDataSourcesInFilter() []string {
-	if o == nil || IsNil(o.DataSourcesInFilter) {
+// GetDataSourceId returns the DataSourceId field value
+func (o *Filter) GetDataSourceId() []string {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.DataSourcesInFilter
+
+	return o.DataSourceId
 }
 
-// GetDataSourcesInFilterOk returns a tuple with the DataSourcesInFilter field value if set, nil otherwise
+// GetDataSourceIdOk returns a tuple with the DataSourceId field value
 // and a boolean to check if the value has been set.
-func (o *Filter) GetDataSourcesInFilterOk() ([]string, bool) {
-	if o == nil || IsNil(o.DataSourcesInFilter) {
+func (o *Filter) GetDataSourceIdOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DataSourcesInFilter, true
+	return o.DataSourceId, true
 }
 
-// HasDataSourcesInFilter returns a boolean if a field has been set.
-func (o *Filter) HasDataSourcesInFilter() bool {
-	if o != nil && !IsNil(o.DataSourcesInFilter) {
-		return true
-	}
-
-	return false
+// SetDataSourceId sets field value
+func (o *Filter) SetDataSourceId(v []string) {
+	o.DataSourceId = v
 }
 
-// SetDataSourcesInFilter gets a reference to the given []string and assigns it to the DataSourcesInFilter field.
-func (o *Filter) SetDataSourcesInFilter(v []string) {
-	o.DataSourcesInFilter = v
-}
-
-// GetResourceId returns the ResourceId field value if set, zero value otherwise.
+// GetResourceId returns the ResourceId field value
 func (o *Filter) GetResourceId() string {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceId
+
+	return o.ResourceId
 }
 
-// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// GetResourceIdOk returns a tuple with the ResourceId field value
 // and a boolean to check if the value has been set.
 func (o *Filter) GetResourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceId, true
+	return &o.ResourceId, true
 }
 
-// HasResourceId returns a boolean if a field has been set.
-func (o *Filter) HasResourceId() bool {
-	if o != nil && !IsNil(o.ResourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+// SetResourceId sets field value
 func (o *Filter) SetResourceId(v string) {
-	o.ResourceId = &v
+	o.ResourceId = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -211,36 +184,28 @@ func (o *Filter) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value
 func (o *Filter) GetState() string {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.State
+
+	return o.State
 }
 
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 func (o *Filter) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return &o.State, true
 }
 
-// HasState returns a boolean if a field has been set.
-func (o *Filter) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given string and assigns it to the State field.
+// SetState sets field value
 func (o *Filter) SetState(v string) {
-	o.State = &v
+	o.State = v
 }
 
 func (o Filter) MarshalJSON() ([]byte, error) {
@@ -253,24 +218,14 @@ func (o Filter) MarshalJSON() ([]byte, error) {
 
 func (o Filter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.DataDestinationsUsingFilter) {
-		toSerialize["dataDestinationsUsingFilter"] = o.DataDestinationsUsingFilter
-	}
-	if !IsNil(o.DataSourcesInFilter) {
-		toSerialize["dataSourcesInFilter"] = o.DataSourcesInFilter
-	}
-	if !IsNil(o.ResourceId) {
-		toSerialize["resourceId"] = o.ResourceId
-	}
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["dataDestinationsUsingFilter"] = o.DataDestinationsUsingFilter
+	toSerialize["dataSourceId"] = o.DataSourceId
+	toSerialize["resourceId"] = o.ResourceId
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["state"] = o.State
 	return toSerialize, nil
 }
 

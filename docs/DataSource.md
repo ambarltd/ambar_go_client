@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **string** | The UTC time at which the DataSource was created. | [optional] 
-**DataSourceConfig** | Pointer to **map[string]interface{}** | The properties describing the configuration details for the given DataSourceType. | [optional] 
-**DataSourceType** | Pointer to **string** | The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from. | [optional] 
-**ResourceId** | Pointer to **string** | The Ambar resourceId corresponding to this DataSource. | [optional] 
-**State** | Pointer to **string** | The ResourceState of this DataSource. For possible values see ResourceState in our developer docs. | [optional] 
+**CreatedAt** | **string** | The UTC time at which the DataSource was created. | 
+**DataSourceConfig** | **map[string]interface{}** | The properties describing the configuration details for the given DataSourceType. | 
+**DataSourceType** | **string** | The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from. | 
+**ResourceId** | **string** | The Ambar resourceId corresponding to this DataSource. | 
+**State** | **string** | The ResourceState of this DataSource. For possible values see ResourceState in our developer docs. | 
 
 ## Methods
 
 ### NewDataSource
 
-`func NewDataSource() *DataSource`
+`func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string, ) *DataSource`
 
 NewDataSource instantiates a new DataSource object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *DataSource) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDataSourceConfig
 
@@ -73,11 +68,6 @@ and a boolean to check if the value has been set.
 
 SetDataSourceConfig sets DataSourceConfig field to given value.
 
-### HasDataSourceConfig
-
-`func (o *DataSource) HasDataSourceConfig() bool`
-
-HasDataSourceConfig returns a boolean if a field has been set.
 
 ### GetDataSourceType
 
@@ -98,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetDataSourceType sets DataSourceType field to given value.
 
-### HasDataSourceType
-
-`func (o *DataSource) HasDataSourceType() bool`
-
-HasDataSourceType returns a boolean if a field has been set.
 
 ### GetResourceId
 
@@ -123,11 +108,6 @@ and a boolean to check if the value has been set.
 
 SetResourceId sets ResourceId field to given value.
 
-### HasResourceId
-
-`func (o *DataSource) HasResourceId() bool`
-
-HasResourceId returns a boolean if a field has been set.
 
 ### GetState
 
@@ -148,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-### HasState
-
-`func (o *DataSource) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

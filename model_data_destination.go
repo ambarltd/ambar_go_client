@@ -21,27 +21,33 @@ var _ MappedNullable = &DataDestination{}
 // DataDestination The properties describing an Ambar Data Destination.
 type DataDestination struct {
 	// The UTC time at which the DataDestination was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt string `json:"createdAt"`
 	// The HTTP endpoint which Ambar sends filtered record sequences to.
-	DestinationEndpoint *string `json:"destinationEndpoint,omitempty"`
+	DestinationEndpoint string `json:"destinationEndpoint"`
 	// The description of the DataDestination given when it was created.
 	Description *string `json:"description,omitempty"`
 	// The name given to this DataDestinations projection at creation.
-	DestinationName *string `json:"destinationName,omitempty"`
+	DestinationName string `json:"destinationName"`
 	// The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination.
-	FilterIds []string `json:"filterIds,omitempty"`
+	FilterIds []string `json:"filterIds"`
 	// The Ambar resourceId corresponding to this DataDestination.
-	ResourceId *string `json:"resourceId,omitempty"`
+	ResourceId string `json:"resourceId"`
 	// The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs.
-	State *string `json:"state,omitempty"`
+	State string `json:"state"`
 }
 
 // NewDataDestination instantiates a new DataDestination object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataDestination() *DataDestination {
+func NewDataDestination(createdAt string, destinationEndpoint string, destinationName string, filterIds []string, resourceId string, state string) *DataDestination {
 	this := DataDestination{}
+	this.CreatedAt = createdAt
+	this.DestinationEndpoint = destinationEndpoint
+	this.DestinationName = destinationName
+	this.FilterIds = filterIds
+	this.ResourceId = resourceId
+	this.State = state
 	return &this
 }
 
@@ -53,68 +59,52 @@ func NewDataDestinationWithDefaults() *DataDestination {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *DataDestination) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *DataDestination) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *DataDestination) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetDestinationEndpoint returns the DestinationEndpoint field value if set, zero value otherwise.
+// GetDestinationEndpoint returns the DestinationEndpoint field value
 func (o *DataDestination) GetDestinationEndpoint() string {
-	if o == nil || IsNil(o.DestinationEndpoint) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DestinationEndpoint
+
+	return o.DestinationEndpoint
 }
 
-// GetDestinationEndpointOk returns a tuple with the DestinationEndpoint field value if set, nil otherwise
+// GetDestinationEndpointOk returns a tuple with the DestinationEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetDestinationEndpointOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationEndpoint) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DestinationEndpoint, true
+	return &o.DestinationEndpoint, true
 }
 
-// HasDestinationEndpoint returns a boolean if a field has been set.
-func (o *DataDestination) HasDestinationEndpoint() bool {
-	if o != nil && !IsNil(o.DestinationEndpoint) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationEndpoint gets a reference to the given string and assigns it to the DestinationEndpoint field.
+// SetDestinationEndpoint sets field value
 func (o *DataDestination) SetDestinationEndpoint(v string) {
-	o.DestinationEndpoint = &v
+	o.DestinationEndpoint = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -149,132 +139,100 @@ func (o *DataDestination) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetDestinationName returns the DestinationName field value if set, zero value otherwise.
+// GetDestinationName returns the DestinationName field value
 func (o *DataDestination) GetDestinationName() string {
-	if o == nil || IsNil(o.DestinationName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.DestinationName
+
+	return o.DestinationName
 }
 
-// GetDestinationNameOk returns a tuple with the DestinationName field value if set, nil otherwise
+// GetDestinationNameOk returns a tuple with the DestinationName field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetDestinationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DestinationName, true
+	return &o.DestinationName, true
 }
 
-// HasDestinationName returns a boolean if a field has been set.
-func (o *DataDestination) HasDestinationName() bool {
-	if o != nil && !IsNil(o.DestinationName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationName gets a reference to the given string and assigns it to the DestinationName field.
+// SetDestinationName sets field value
 func (o *DataDestination) SetDestinationName(v string) {
-	o.DestinationName = &v
+	o.DestinationName = v
 }
 
-// GetFilterIds returns the FilterIds field value if set, zero value otherwise.
+// GetFilterIds returns the FilterIds field value
 func (o *DataDestination) GetFilterIds() []string {
-	if o == nil || IsNil(o.FilterIds) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.FilterIds
 }
 
-// GetFilterIdsOk returns a tuple with the FilterIds field value if set, nil otherwise
+// GetFilterIdsOk returns a tuple with the FilterIds field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetFilterIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.FilterIds) {
+	if o == nil {
 		return nil, false
 	}
 	return o.FilterIds, true
 }
 
-// HasFilterIds returns a boolean if a field has been set.
-func (o *DataDestination) HasFilterIds() bool {
-	if o != nil && !IsNil(o.FilterIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetFilterIds gets a reference to the given []string and assigns it to the FilterIds field.
+// SetFilterIds sets field value
 func (o *DataDestination) SetFilterIds(v []string) {
 	o.FilterIds = v
 }
 
-// GetResourceId returns the ResourceId field value if set, zero value otherwise.
+// GetResourceId returns the ResourceId field value
 func (o *DataDestination) GetResourceId() string {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ResourceId
+
+	return o.ResourceId
 }
 
-// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// GetResourceIdOk returns a tuple with the ResourceId field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetResourceIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceId, true
+	return &o.ResourceId, true
 }
 
-// HasResourceId returns a boolean if a field has been set.
-func (o *DataDestination) HasResourceId() bool {
-	if o != nil && !IsNil(o.ResourceId) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+// SetResourceId sets field value
 func (o *DataDestination) SetResourceId(v string) {
-	o.ResourceId = &v
+	o.ResourceId = v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value
 func (o *DataDestination) GetState() string {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.State
+
+	return o.State
 }
 
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 func (o *DataDestination) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return &o.State, true
 }
 
-// HasState returns a boolean if a field has been set.
-func (o *DataDestination) HasState() bool {
-	if o != nil && !IsNil(o.State) {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given string and assigns it to the State field.
+// SetState sets field value
 func (o *DataDestination) SetState(v string) {
-	o.State = &v
+	o.State = v
 }
 
 func (o DataDestination) MarshalJSON() ([]byte, error) {
@@ -287,27 +245,15 @@ func (o DataDestination) MarshalJSON() ([]byte, error) {
 
 func (o DataDestination) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.DestinationEndpoint) {
-		toSerialize["destinationEndpoint"] = o.DestinationEndpoint
-	}
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["destinationEndpoint"] = o.DestinationEndpoint
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.DestinationName) {
-		toSerialize["destinationName"] = o.DestinationName
-	}
-	if !IsNil(o.FilterIds) {
-		toSerialize["filterIds"] = o.FilterIds
-	}
-	if !IsNil(o.ResourceId) {
-		toSerialize["resourceId"] = o.ResourceId
-	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["destinationName"] = o.DestinationName
+	toSerialize["filterIds"] = o.FilterIds
+	toSerialize["resourceId"] = o.ResourceId
+	toSerialize["state"] = o.State
 	return toSerialize, nil
 }
 

@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **string** | The UTC time at which the DataDestination was created. | [optional] 
-**DestinationEndpoint** | Pointer to **string** | The HTTP endpoint which Ambar sends filtered record sequences to. | [optional] 
+**CreatedAt** | **string** | The UTC time at which the DataDestination was created. | 
+**DestinationEndpoint** | **string** | The HTTP endpoint which Ambar sends filtered record sequences to. | 
 **Description** | Pointer to **string** | The description of the DataDestination given when it was created. | [optional] 
-**DestinationName** | Pointer to **string** | The name given to this DataDestinations projection at creation. | [optional] 
-**FilterIds** | Pointer to **[]string** | The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination. | [optional] 
-**ResourceId** | Pointer to **string** | The Ambar resourceId corresponding to this DataDestination. | [optional] 
-**State** | Pointer to **string** | The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs. | [optional] 
+**DestinationName** | **string** | The name given to this DataDestinations projection at creation. | 
+**FilterIds** | **[]string** | The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination. | 
+**ResourceId** | **string** | The Ambar resourceId corresponding to this DataDestination. | 
+**State** | **string** | The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs. | 
 
 ## Methods
 
 ### NewDataDestination
 
-`func NewDataDestination() *DataDestination`
+`func NewDataDestination(createdAt string, destinationEndpoint string, destinationName string, filterIds []string, resourceId string, state string, ) *DataDestination`
 
 NewDataDestination instantiates a new DataDestination object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *DataDestination) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDestinationEndpoint
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetDestinationEndpoint sets DestinationEndpoint field to given value.
 
-### HasDestinationEndpoint
-
-`func (o *DataDestination) HasDestinationEndpoint() bool`
-
-HasDestinationEndpoint returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -125,11 +115,6 @@ and a boolean to check if the value has been set.
 
 SetDestinationName sets DestinationName field to given value.
 
-### HasDestinationName
-
-`func (o *DataDestination) HasDestinationName() bool`
-
-HasDestinationName returns a boolean if a field has been set.
 
 ### GetFilterIds
 
@@ -150,11 +135,6 @@ and a boolean to check if the value has been set.
 
 SetFilterIds sets FilterIds field to given value.
 
-### HasFilterIds
-
-`func (o *DataDestination) HasFilterIds() bool`
-
-HasFilterIds returns a boolean if a field has been set.
 
 ### GetResourceId
 
@@ -175,11 +155,6 @@ and a boolean to check if the value has been set.
 
 SetResourceId sets ResourceId field to given value.
 
-### HasResourceId
-
-`func (o *DataDestination) HasResourceId() bool`
-
-HasResourceId returns a boolean if a field has been set.
 
 ### GetState
 
@@ -200,11 +175,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-### HasState
-
-`func (o *DataDestination) HasState() bool`
-
-HasState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

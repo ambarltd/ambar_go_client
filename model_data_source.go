@@ -30,6 +30,8 @@ type DataSource struct {
 	ResourceId string `json:"resourceId"`
 	// The ResourceState of this DataSource. For possible values see ResourceState in our developer docs.
 	State string `json:"state"`
+	// A user friendly description of this DataSource.
+	Description *string `json:"description,omitempty"`
 }
 
 // NewDataSource instantiates a new DataSource object
@@ -174,6 +176,38 @@ func (o *DataSource) SetState(v string) {
 	o.State = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *DataSource) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataSource) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *DataSource) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *DataSource) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o DataSource) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -189,6 +223,9 @@ func (o DataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize["dataSourceType"] = o.DataSourceType
 	toSerialize["resourceId"] = o.ResourceId
 	toSerialize["state"] = o.State
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	return toSerialize, nil
 }
 

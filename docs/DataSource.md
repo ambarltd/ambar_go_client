@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DataSourceType** | **string** | The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this DataSource. | 
 **State** | **string** | The ResourceState of this DataSource. For possible values see ResourceState in our developer docs. | 
+**Description** | Pointer to **string** | A user friendly description of this DataSource. | [optional] 
 
 ## Methods
 
@@ -128,6 +129,31 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
+
+### GetDescription
+
+`func (o *DataSource) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *DataSource) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *DataSource) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *DataSource) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

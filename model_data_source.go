@@ -24,6 +24,10 @@ type DataSource struct {
 	CreatedAt string `json:"createdAt"`
 	// The properties describing the configuration details for the given DataSourceType.
 	DataSourceConfig map[string]interface{} `json:"dataSourceConfig"`
+	// The name of a column which monotonically increases on database writes.
+	SerialColumn string `json:"serialColumn"`
+	// A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records.
+	PartitioningColumn string `json:"partitioningColumn"`
 	// The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from.
 	DataSourceType string `json:"dataSourceType"`
 	// The Ambar resourceId corresponding to this DataSource.
@@ -38,10 +42,12 @@ type DataSource struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string) *DataSource {
+func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, serialColumn string, partitioningColumn string, dataSourceType string, resourceId string, state string) *DataSource {
 	this := DataSource{}
 	this.CreatedAt = createdAt
 	this.DataSourceConfig = dataSourceConfig
+	this.SerialColumn = serialColumn
+	this.PartitioningColumn = partitioningColumn
 	this.DataSourceType = dataSourceType
 	this.ResourceId = resourceId
 	this.State = state
@@ -102,6 +108,54 @@ func (o *DataSource) GetDataSourceConfigOk() (map[string]interface{}, bool) {
 // SetDataSourceConfig sets field value
 func (o *DataSource) SetDataSourceConfig(v map[string]interface{}) {
 	o.DataSourceConfig = v
+}
+
+// GetSerialColumn returns the SerialColumn field value
+func (o *DataSource) GetSerialColumn() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SerialColumn
+}
+
+// GetSerialColumnOk returns a tuple with the SerialColumn field value
+// and a boolean to check if the value has been set.
+func (o *DataSource) GetSerialColumnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SerialColumn, true
+}
+
+// SetSerialColumn sets field value
+func (o *DataSource) SetSerialColumn(v string) {
+	o.SerialColumn = v
+}
+
+// GetPartitioningColumn returns the PartitioningColumn field value
+func (o *DataSource) GetPartitioningColumn() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PartitioningColumn
+}
+
+// GetPartitioningColumnOk returns a tuple with the PartitioningColumn field value
+// and a boolean to check if the value has been set.
+func (o *DataSource) GetPartitioningColumnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartitioningColumn, true
+}
+
+// SetPartitioningColumn sets field value
+func (o *DataSource) SetPartitioningColumn(v string) {
+	o.PartitioningColumn = v
 }
 
 // GetDataSourceType returns the DataSourceType field value
@@ -220,6 +274,8 @@ func (o DataSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["dataSourceConfig"] = o.DataSourceConfig
+	toSerialize["serialColumn"] = o.SerialColumn
+	toSerialize["partitioningColumn"] = o.PartitioningColumn
 	toSerialize["dataSourceType"] = o.DataSourceType
 	toSerialize["resourceId"] = o.ResourceId
 	toSerialize["state"] = o.State

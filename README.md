@@ -88,6 +88,8 @@ Class | Method | HTTP request | Description
 *AmbarAPI* | [**DescribeDataSource**](docs/AmbarAPI.md#describedatasource) | **Get** /source | Describe a DataSource in your Ambar environment.
 *AmbarAPI* | [**DescribeFilter**](docs/AmbarAPI.md#describefilter) | **Get** /filter | Describes a Filter in your Ambar environment.
 *AmbarAPI* | [**ListResources**](docs/AmbarAPI.md#listresources) | **Get** /resource | List the Ambar resources in your Ambar environment.
+*AmbarAPI* | [**UpdateDataDestinationCredentials**](docs/AmbarAPI.md#updatedatadestinationcredentials) | **Patch** /destination | Update the credentials associated with a DataDestination in your Ambar environment.
+*AmbarAPI* | [**UpdateDataSourceCredentials**](docs/AmbarAPI.md#updatedatasourcecredentials) | **Patch** /source | Update the credentials associated with a DataSource in your Ambar environment.
 
 
 ## Documentation For Models
@@ -113,6 +115,7 @@ Class | Method | HTTP request | Description
  - [ResourceStateChangeResponse](docs/ResourceStateChangeResponse.md)
  - [ResourceTypeDetails](docs/ResourceTypeDetails.md)
  - [ResourceTypeDetailsLimit](docs/ResourceTypeDetailsLimit.md)
+ - [UpdateResourceCredentialsRequest](docs/UpdateResourceCredentialsRequest.md)
 
 
 ## Documentation For Authorization

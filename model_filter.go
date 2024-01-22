@@ -25,7 +25,7 @@ type Filter struct {
 	// The list of DataDestination ResourceIds which use this Filter.
 	DataDestinationsUsingFilter []string `json:"dataDestinationsUsingFilter"`
 	// The DataSource ResourceId which this Filter will read from.
-	DataSourceId []string `json:"dataSourceId"`
+	DataSourceId string `json:"dataSourceId"`
 	// The Ambar resourceId corresponding to this Filter.
 	ResourceId string `json:"resourceId"`
 	// The description of the Filter given when it was created.
@@ -38,7 +38,7 @@ type Filter struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId []string, resourceId string, state string) *Filter {
+func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, state string) *Filter {
 	this := Filter{}
 	this.CreatedAt = createdAt
 	this.DataDestinationsUsingFilter = dataDestinationsUsingFilter
@@ -105,9 +105,9 @@ func (o *Filter) SetDataDestinationsUsingFilter(v []string) {
 }
 
 // GetDataSourceId returns the DataSourceId field value
-func (o *Filter) GetDataSourceId() []string {
+func (o *Filter) GetDataSourceId() string {
 	if o == nil {
-		var ret []string
+		var ret string
 		return ret
 	}
 
@@ -116,15 +116,15 @@ func (o *Filter) GetDataSourceId() []string {
 
 // GetDataSourceIdOk returns a tuple with the DataSourceId field value
 // and a boolean to check if the value has been set.
-func (o *Filter) GetDataSourceIdOk() ([]string, bool) {
+func (o *Filter) GetDataSourceIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.DataSourceId, true
+	return &o.DataSourceId, true
 }
 
 // SetDataSourceId sets field value
-func (o *Filter) SetDataSourceId(v []string) {
+func (o *Filter) SetDataSourceId(v string) {
 	o.DataSourceId = v
 }
 

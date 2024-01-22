@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The UTC time at which the Filter was created. | 
 **DataDestinationsUsingFilter** | **[]string** | The list of DataDestination ResourceIds which use this Filter. | 
-**DataSourceId** | **[]string** | The DataSource ResourceId which this Filter will read from. | 
+**DataSourceId** | **string** | The DataSource ResourceId which this Filter will read from. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this Filter. | 
 **Description** | Pointer to **string** | The description of the Filter given when it was created. | [optional] 
 **State** | **string** | The ResourceState of this Filter. For possible values see ResourceState in our developer docs. | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewFilter
 
-`func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId []string, resourceId string, state string, ) *Filter`
+`func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, state string, ) *Filter`
 
 NewFilter instantiates a new Filter object
 This constructor will assign default values to properties that have it defined,
@@ -72,20 +72,20 @@ SetDataDestinationsUsingFilter sets DataDestinationsUsingFilter field to given v
 
 ### GetDataSourceId
 
-`func (o *Filter) GetDataSourceId() []string`
+`func (o *Filter) GetDataSourceId() string`
 
 GetDataSourceId returns the DataSourceId field if non-nil, zero value otherwise.
 
 ### GetDataSourceIdOk
 
-`func (o *Filter) GetDataSourceIdOk() (*[]string, bool)`
+`func (o *Filter) GetDataSourceIdOk() (*string, bool)`
 
 GetDataSourceIdOk returns a tuple with the DataSourceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataSourceId
 
-`func (o *Filter) SetDataSourceId(v []string)`
+`func (o *Filter) SetDataSourceId(v string)`
 
 SetDataSourceId sets DataSourceId field to given value.
 

@@ -2,10 +2,7 @@ module github.com/ambarltd/ambar_go_client
 
 go 1.18
 
-require (
-	github.com/ambarltd/ambar_go_client
-	github.com/stretchr/testify v1.8.4
-)
+require github.com/stretchr/testify v1.8.4
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

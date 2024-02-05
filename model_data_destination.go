@@ -28,8 +28,6 @@ type DataDestination struct {
 	DestinationEndpoint string `json:"destinationEndpoint"`
 	// The description of the DataDestination given when it was created.
 	Description *string `json:"description,omitempty"`
-	// The name given to this DataDestinations projection at creation.
-	DestinationName string `json:"destinationName"`
 	// The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination.
 	FilterIds []string `json:"filterIds"`
 	// The Ambar resourceId corresponding to this DataDestination.
@@ -44,11 +42,10 @@ type _DataDestination DataDestination
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataDestination(createdAt string, destinationEndpoint string, destinationName string, filterIds []string, resourceId string, state string) *DataDestination {
+func NewDataDestination(createdAt string, destinationEndpoint string, filterIds []string, resourceId string, state string) *DataDestination {
 	this := DataDestination{}
 	this.CreatedAt = createdAt
 	this.DestinationEndpoint = destinationEndpoint
-	this.DestinationName = destinationName
 	this.FilterIds = filterIds
 	this.ResourceId = resourceId
 	this.State = state
@@ -143,30 +140,6 @@ func (o *DataDestination) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetDestinationName returns the DestinationName field value
-func (o *DataDestination) GetDestinationName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DestinationName
-}
-
-// GetDestinationNameOk returns a tuple with the DestinationName field value
-// and a boolean to check if the value has been set.
-func (o *DataDestination) GetDestinationNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DestinationName, true
-}
-
-// SetDestinationName sets field value
-func (o *DataDestination) SetDestinationName(v string) {
-	o.DestinationName = v
-}
-
 // GetFilterIds returns the FilterIds field value
 func (o *DataDestination) GetFilterIds() []string {
 	if o == nil {
@@ -254,7 +227,6 @@ func (o DataDestination) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["destinationName"] = o.DestinationName
 	toSerialize["filterIds"] = o.FilterIds
 	toSerialize["resourceId"] = o.ResourceId
 	toSerialize["state"] = o.State
@@ -268,7 +240,6 @@ func (o *DataDestination) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"createdAt",
 		"destinationEndpoint",
-		"destinationName",
 		"filterIds",
 		"resourceId",
 		"state",

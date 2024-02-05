@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | 
 **Description** | Pointer to **string** | A description for identifying this DataDestination. | [optional] 
 **FilterIds** | **[]string** | The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
-**DestinationName** | Pointer to **string** | A name for this DataDestination projection | [optional] 
 **Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 **Username** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 
@@ -94,31 +93,6 @@ and a boolean to check if the value has been set.
 
 SetFilterIds sets FilterIds field to given value.
 
-
-### GetDestinationName
-
-`func (o *CreateDataDestinationRequest) GetDestinationName() string`
-
-GetDestinationName returns the DestinationName field if non-nil, zero value otherwise.
-
-### GetDestinationNameOk
-
-`func (o *CreateDataDestinationRequest) GetDestinationNameOk() (*string, bool)`
-
-GetDestinationNameOk returns a tuple with the DestinationName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinationName
-
-`func (o *CreateDataDestinationRequest) SetDestinationName(v string)`
-
-SetDestinationName sets DestinationName field to given value.
-
-### HasDestinationName
-
-`func (o *CreateDataDestinationRequest) HasDestinationName() bool`
-
-HasDestinationName returns a boolean if a field has been set.
 
 ### GetPassword
 

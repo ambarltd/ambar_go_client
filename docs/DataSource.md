@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The UTC time at which the DataSource was created. | 
 **DataSourceConfig** | **map[string]interface{}** | The properties describing the configuration details for the given DataSourceType. | 
-**SerialColumn** | **string** | The name of a column which monotonically increases on database writes. | 
-**PartitioningColumn** | **string** | A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records. | 
 **DataSourceType** | **string** | The DataSourceType describing the type of durable storage system this DataSource pulls record sequences from. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this DataSource. | 
 **State** | **string** | The ResourceState of this DataSource. For possible values see ResourceState in our developer docs. | 
@@ -17,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewDataSource
 
-`func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, serialColumn string, partitioningColumn string, dataSourceType string, resourceId string, state string, ) *DataSource`
+`func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string, ) *DataSource`
 
 NewDataSource instantiates a new DataSource object
 This constructor will assign default values to properties that have it defined,
@@ -70,46 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *DataSource) SetDataSourceConfig(v map[string]interface{})`
 
 SetDataSourceConfig sets DataSourceConfig field to given value.
-
-
-### GetSerialColumn
-
-`func (o *DataSource) GetSerialColumn() string`
-
-GetSerialColumn returns the SerialColumn field if non-nil, zero value otherwise.
-
-### GetSerialColumnOk
-
-`func (o *DataSource) GetSerialColumnOk() (*string, bool)`
-
-GetSerialColumnOk returns a tuple with the SerialColumn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSerialColumn
-
-`func (o *DataSource) SetSerialColumn(v string)`
-
-SetSerialColumn sets SerialColumn field to given value.
-
-
-### GetPartitioningColumn
-
-`func (o *DataSource) GetPartitioningColumn() string`
-
-GetPartitioningColumn returns the PartitioningColumn field if non-nil, zero value otherwise.
-
-### GetPartitioningColumnOk
-
-`func (o *DataSource) GetPartitioningColumnOk() (*string, bool)`
-
-GetPartitioningColumnOk returns a tuple with the PartitioningColumn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartitioningColumn
-
-`func (o *DataSource) SetPartitioningColumn(v string)`
-
-SetPartitioningColumn sets PartitioningColumn field to given value.
 
 
 ### GetDataSourceType

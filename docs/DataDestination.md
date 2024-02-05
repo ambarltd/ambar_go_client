@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **CreatedAt** | **string** | The UTC time at which the DataDestination was created. | 
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar sends filtered record sequences to. | 
 **Description** | Pointer to **string** | The description of the DataDestination given when it was created. | [optional] 
-**DestinationName** | **string** | The name given to this DataDestinations projection at creation. | 
 **FilterIds** | **[]string** | The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this DataDestination. | 
 **State** | **string** | The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs. | 
@@ -16,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewDataDestination
 
-`func NewDataDestination(createdAt string, destinationEndpoint string, destinationName string, filterIds []string, resourceId string, state string, ) *DataDestination`
+`func NewDataDestination(createdAt string, destinationEndpoint string, filterIds []string, resourceId string, state string, ) *DataDestination`
 
 NewDataDestination instantiates a new DataDestination object
 This constructor will assign default values to properties that have it defined,
@@ -95,26 +94,6 @@ SetDescription sets Description field to given value.
 `func (o *DataDestination) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetDestinationName
-
-`func (o *DataDestination) GetDestinationName() string`
-
-GetDestinationName returns the DestinationName field if non-nil, zero value otherwise.
-
-### GetDestinationNameOk
-
-`func (o *DataDestination) GetDestinationNameOk() (*string, bool)`
-
-GetDestinationNameOk returns a tuple with the DestinationName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDestinationName
-
-`func (o *DataDestination) SetDestinationName(v string)`
-
-SetDestinationName sets DestinationName field to given value.
-
 
 ### GetFilterIds
 

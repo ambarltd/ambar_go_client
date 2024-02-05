@@ -28,8 +28,6 @@ type CreateDataDestinationRequest struct {
 	Description *string `json:"description,omitempty"`
 	// The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
 	FilterIds []string `json:"filterIds"`
-	// A name for this DataDestination projection
-	DestinationName *string `json:"destinationName,omitempty"`
 	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
 	Password string `json:"password"`
 	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
@@ -139,38 +137,6 @@ func (o *CreateDataDestinationRequest) SetFilterIds(v []string) {
 	o.FilterIds = v
 }
 
-// GetDestinationName returns the DestinationName field value if set, zero value otherwise.
-func (o *CreateDataDestinationRequest) GetDestinationName() string {
-	if o == nil || IsNil(o.DestinationName) {
-		var ret string
-		return ret
-	}
-	return *o.DestinationName
-}
-
-// GetDestinationNameOk returns a tuple with the DestinationName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDataDestinationRequest) GetDestinationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationName) {
-		return nil, false
-	}
-	return o.DestinationName, true
-}
-
-// HasDestinationName returns a boolean if a field has been set.
-func (o *CreateDataDestinationRequest) HasDestinationName() bool {
-	if o != nil && !IsNil(o.DestinationName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationName gets a reference to the given string and assigns it to the DestinationName field.
-func (o *CreateDataDestinationRequest) SetDestinationName(v string) {
-	o.DestinationName = &v
-}
-
 // GetPassword returns the Password field value
 func (o *CreateDataDestinationRequest) GetPassword() string {
 	if o == nil {
@@ -234,9 +200,6 @@ func (o CreateDataDestinationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["filterIds"] = o.FilterIds
-	if !IsNil(o.DestinationName) {
-		toSerialize["destinationName"] = o.DestinationName
-	}
 	toSerialize["password"] = o.Password
 	toSerialize["username"] = o.Username
 	return toSerialize, nil

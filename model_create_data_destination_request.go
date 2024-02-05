@@ -26,7 +26,7 @@ type CreateDataDestinationRequest struct {
 	DestinationEndpoint string `json:"destinationEndpoint"`
 	// A description for identifying this DataDestination.
 	Description *string `json:"description,omitempty"`
-	// The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
+	// The Ambar ResourceId of a the filters in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
 	FilterIds []string `json:"filterIds"`
 	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
 	Password string `json:"password"`

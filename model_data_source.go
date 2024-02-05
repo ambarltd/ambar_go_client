@@ -34,6 +34,8 @@ type DataSource struct {
 	State string `json:"state"`
 	// A user friendly description of this DataSource.
 	Description *string `json:"description,omitempty"`
+	// The Ambar ResourceIds of filters which refer to this DataSource.
+	FilterIds []string `json:"filterIds"`
 }
 
 type _DataSource DataSource
@@ -42,13 +44,14 @@ type _DataSource DataSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string) *DataSource {
+func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string, filterIds []string) *DataSource {
 	this := DataSource{}
 	this.CreatedAt = createdAt
 	this.DataSourceConfig = dataSourceConfig
 	this.DataSourceType = dataSourceType
 	this.ResourceId = resourceId
 	this.State = state
+	this.FilterIds = filterIds
 	return &this
 }
 
@@ -212,6 +215,30 @@ func (o *DataSource) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetFilterIds returns the FilterIds field value
+func (o *DataSource) GetFilterIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.FilterIds
+}
+
+// GetFilterIdsOk returns a tuple with the FilterIds field value
+// and a boolean to check if the value has been set.
+func (o *DataSource) GetFilterIdsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FilterIds, true
+}
+
+// SetFilterIds sets field value
+func (o *DataSource) SetFilterIds(v []string) {
+	o.FilterIds = v
+}
+
 func (o DataSource) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -230,6 +257,7 @@ func (o DataSource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	toSerialize["filterIds"] = o.FilterIds
 	return toSerialize, nil
 }
 
@@ -243,6 +271,7 @@ func (o *DataSource) UnmarshalJSON(data []byte) (err error) {
 		"dataSourceType",
 		"resourceId",
 		"state",
+		"filterIds",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeleteResourceRequest type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type DeleteResourceRequest struct {
 	// An Ambar resourceId.
 	ResourceId string `json:"resourceId"`
 }
+
+type _DeleteResourceRequest DeleteResourceRequest
 
 // NewDeleteResourceRequest instantiates a new DeleteResourceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -78,6 +82,43 @@ func (o DeleteResourceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["resourceId"] = o.ResourceId
 	return toSerialize, nil
+}
+
+func (o *DeleteResourceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resourceId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeleteResourceRequest := _DeleteResourceRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeleteResourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteResourceRequest(varDeleteResourceRequest)
+
+	return err
 }
 
 type NullableDeleteResourceRequest struct {

@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CreateDataSourceRequest type satisfies the MappedNullable interface at compile time
@@ -24,29 +26,19 @@ type CreateDataSourceRequest struct {
 	DataSourceType string `json:"dataSourceType"`
 	// A description for identifying this DataSource.
 	Description *string `json:"description,omitempty"`
-	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
-	Username string `json:"username"`
-	// A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service.
-	Password string `json:"password"`
-	// The name of a column which monotonically increases on database writes.
-	SerialColumn string `json:"serialColumn"`
-	// A case sensitive string for the name of the column in your table Ambar can partition on.  Note that partition keys must be unique to a given sequence of records.
-	PartitioningColumn string `json:"partitioningColumn"`
 	// A object containing inputs which are specific depending on the type of DataSource being created. See out developer docs for supported DataSourceTypes and corresponding configurations.
 	DataSourceConfig map[string]string `json:"dataSourceConfig"`
 }
+
+type _CreateDataSourceRequest CreateDataSourceRequest
 
 // NewCreateDataSourceRequest instantiates a new CreateDataSourceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDataSourceRequest(dataSourceType string, username string, password string, serialColumn string, partitioningColumn string, dataSourceConfig map[string]string) *CreateDataSourceRequest {
+func NewCreateDataSourceRequest(dataSourceType string, dataSourceConfig map[string]string) *CreateDataSourceRequest {
 	this := CreateDataSourceRequest{}
 	this.DataSourceType = dataSourceType
-	this.Username = username
-	this.Password = password
-	this.SerialColumn = serialColumn
-	this.PartitioningColumn = partitioningColumn
 	this.DataSourceConfig = dataSourceConfig
 	return &this
 }
@@ -115,102 +107,6 @@ func (o *CreateDataSourceRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetUsername returns the Username field value
-func (o *CreateDataSourceRequest) GetUsername() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetUsernameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *CreateDataSourceRequest) SetUsername(v string) {
-	o.Username = v
-}
-
-// GetPassword returns the Password field value
-func (o *CreateDataSourceRequest) GetPassword() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value
-// and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Password, true
-}
-
-// SetPassword sets field value
-func (o *CreateDataSourceRequest) SetPassword(v string) {
-	o.Password = v
-}
-
-// GetSerialColumn returns the SerialColumn field value
-func (o *CreateDataSourceRequest) GetSerialColumn() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SerialColumn
-}
-
-// GetSerialColumnOk returns a tuple with the SerialColumn field value
-// and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetSerialColumnOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SerialColumn, true
-}
-
-// SetSerialColumn sets field value
-func (o *CreateDataSourceRequest) SetSerialColumn(v string) {
-	o.SerialColumn = v
-}
-
-// GetPartitioningColumn returns the PartitioningColumn field value
-func (o *CreateDataSourceRequest) GetPartitioningColumn() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.PartitioningColumn
-}
-
-// GetPartitioningColumnOk returns a tuple with the PartitioningColumn field value
-// and a boolean to check if the value has been set.
-func (o *CreateDataSourceRequest) GetPartitioningColumnOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.PartitioningColumn, true
-}
-
-// SetPartitioningColumn sets field value
-func (o *CreateDataSourceRequest) SetPartitioningColumn(v string) {
-	o.PartitioningColumn = v
-}
-
 // GetDataSourceConfig returns the DataSourceConfig field value
 func (o *CreateDataSourceRequest) GetDataSourceConfig() map[string]string {
 	if o == nil {
@@ -249,12 +145,46 @@ func (o CreateDataSourceRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
-	toSerialize["serialColumn"] = o.SerialColumn
-	toSerialize["partitioningColumn"] = o.PartitioningColumn
 	toSerialize["dataSourceConfig"] = o.DataSourceConfig
 	return toSerialize, nil
+}
+
+func (o *CreateDataSourceRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"dataSourceType",
+		"dataSourceConfig",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCreateDataSourceRequest := _CreateDataSourceRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateDataSourceRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateDataSourceRequest(varCreateDataSourceRequest)
+
+	return err
 }
 
 type NullableCreateDataSourceRequest struct {

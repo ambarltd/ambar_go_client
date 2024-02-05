@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InvalidFilterException type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ var _ MappedNullable = &InvalidFilterException{}
 type InvalidFilterException struct {
 	InvalidFilterException string `json:"InvalidFilterException"`
 }
+
+type _InvalidFilterException InvalidFilterException
 
 // NewInvalidFilterException instantiates a new InvalidFilterException object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o InvalidFilterException) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["InvalidFilterException"] = o.InvalidFilterException
 	return toSerialize, nil
+}
+
+func (o *InvalidFilterException) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"InvalidFilterException",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInvalidFilterException := _InvalidFilterException{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInvalidFilterException)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvalidFilterException(varInvalidFilterException)
+
+	return err
 }
 
 type NullableInvalidFilterException struct {

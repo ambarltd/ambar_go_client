@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceId** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**ResourceState** | Pointer to **string** |  | [optional] 
+**State** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **LastUpdated** | Pointer to **string** |  | [optional] 
 
@@ -79,30 +79,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetResourceState
+### GetState
 
-`func (o *ResourceDetails) GetResourceState() string`
+`func (o *ResourceDetails) GetState() string`
 
-GetResourceState returns the ResourceState field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetResourceStateOk
+### GetStateOk
 
-`func (o *ResourceDetails) GetResourceStateOk() (*string, bool)`
+`func (o *ResourceDetails) GetStateOk() (*string, bool)`
 
-GetResourceStateOk returns a tuple with the ResourceState field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResourceState
+### SetState
 
-`func (o *ResourceDetails) SetResourceState(v string)`
+`func (o *ResourceDetails) SetState(v string)`
 
-SetResourceState sets ResourceState field to given value.
+SetState sets State field to given value.
 
-### HasResourceState
+### HasState
 
-`func (o *ResourceDetails) HasResourceState() bool`
+`func (o *ResourceDetails) HasState() bool`
 
-HasResourceState returns a boolean if a field has been set.
+HasState returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

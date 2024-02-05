@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UpdateResourceCredentialsRequest type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type UpdateResourceCredentialsRequest struct {
 	// The username portion of the credential to update for your resource.
 	Username string `json:"username"`
 }
+
+type _UpdateResourceCredentialsRequest UpdateResourceCredentialsRequest
 
 // NewUpdateResourceCredentialsRequest instantiates a new UpdateResourceCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -134,6 +138,45 @@ func (o UpdateResourceCredentialsRequest) ToMap() (map[string]interface{}, error
 	toSerialize["password"] = o.Password
 	toSerialize["username"] = o.Username
 	return toSerialize, nil
+}
+
+func (o *UpdateResourceCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resourceId",
+		"password",
+		"username",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUpdateResourceCredentialsRequest := _UpdateResourceCredentialsRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpdateResourceCredentialsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateResourceCredentialsRequest(varUpdateResourceCredentialsRequest)
+
+	return err
 }
 
 type NullableUpdateResourceCredentialsRequest struct {

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceId** | **string** |  | 
-**ResourceState** | **string** |  | 
+**State** | **string** |  | 
 
 ## Methods
 
 ### NewResourceStateChangeResponse
 
-`func NewResourceStateChangeResponse(resourceId string, resourceState string, ) *ResourceStateChangeResponse`
+`func NewResourceStateChangeResponse(resourceId string, state string, ) *ResourceStateChangeResponse`
 
 NewResourceStateChangeResponse instantiates a new ResourceStateChangeResponse object
 This constructor will assign default values to properties that have it defined,
@@ -46,24 +46,24 @@ and a boolean to check if the value has been set.
 SetResourceId sets ResourceId field to given value.
 
 
-### GetResourceState
+### GetState
 
-`func (o *ResourceStateChangeResponse) GetResourceState() string`
+`func (o *ResourceStateChangeResponse) GetState() string`
 
-GetResourceState returns the ResourceState field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetResourceStateOk
+### GetStateOk
 
-`func (o *ResourceStateChangeResponse) GetResourceStateOk() (*string, bool)`
+`func (o *ResourceStateChangeResponse) GetStateOk() (*string, bool)`
 
-GetResourceStateOk returns a tuple with the ResourceState field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResourceState
+### SetState
 
-`func (o *ResourceStateChangeResponse) SetResourceState(v string)`
+`func (o *ResourceStateChangeResponse) SetState(v string)`
 
-SetResourceState sets ResourceState field to given value.
+SetState sets State field to given value.
 
 
 

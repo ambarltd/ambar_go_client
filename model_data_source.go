@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DataSource type satisfies the MappedNullable interface at compile time
@@ -37,6 +39,8 @@ type DataSource struct {
 	// A user friendly description of this DataSource.
 	Description *string `json:"description,omitempty"`
 }
+
+type _DataSource DataSource
 
 // NewDataSource instantiates a new DataSource object
 // This constructor will assign default values to properties that have it defined,
@@ -283,6 +287,49 @@ func (o DataSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
+}
+
+func (o *DataSource) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"createdAt",
+		"dataSourceConfig",
+		"serialColumn",
+		"partitioningColumn",
+		"dataSourceType",
+		"resourceId",
+		"state",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDataSource := _DataSource{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDataSource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DataSource(varDataSource)
+
+	return err
 }
 
 type NullableDataSource struct {

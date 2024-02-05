@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DataDestination type satisfies the MappedNullable interface at compile time
@@ -35,6 +37,8 @@ type DataDestination struct {
 	// The ResourceState of this DataDestination. For possible values see ResourceState in our developer docs.
 	State string `json:"state"`
 }
+
+type _DataDestination DataDestination
 
 // NewDataDestination instantiates a new DataDestination object
 // This constructor will assign default values to properties that have it defined,
@@ -255,6 +259,48 @@ func (o DataDestination) ToMap() (map[string]interface{}, error) {
 	toSerialize["resourceId"] = o.ResourceId
 	toSerialize["state"] = o.State
 	return toSerialize, nil
+}
+
+func (o *DataDestination) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"createdAt",
+		"destinationEndpoint",
+		"destinationName",
+		"filterIds",
+		"resourceId",
+		"state",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDataDestination := _DataDestination{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDataDestination)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DataDestination(varDataDestination)
+
+	return err
 }
 
 type NullableDataDestination struct {

@@ -15,7 +15,6 @@ Method | HTTP request | Description
 [**DescribeFilter**](AmbarAPI.md#DescribeFilter) | **Get** /filter | Describes a Filter in your Ambar environment.
 [**ListResources**](AmbarAPI.md#ListResources) | **Get** /resource | List the Ambar resources in your Ambar environment.
 [**UpdateDataDestinationCredentials**](AmbarAPI.md#UpdateDataDestinationCredentials) | **Patch** /destination | Update the credentials associated with a DataDestination in your Ambar environment.
-[**UpdateDataSourceCredentials**](AmbarAPI.md#UpdateDataSourceCredentials) | **Patch** /source | Update the credentials associated with a DataSource in your Ambar environment.
 
 
 
@@ -33,24 +32,24 @@ Create a DataDestination in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createDataDestinationRequest := *openapiclient.NewCreateDataDestinationRequest("DestinationEndpoint_example", []string{"FilterIds_example"}, "Password_example", "Username_example") // CreateDataDestinationRequest | 
+	createDataDestinationRequest := *openapiclient.NewCreateDataDestinationRequest("DestinationEndpoint_example", []string{"FilterIds_example"}, "Password_example", "Username_example") // CreateDataDestinationRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.CreateDataDestination(context.Background()).CreateDataDestinationRequest(createDataDestinationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateDataDestination``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDataDestination`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateDataDestination`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.CreateDataDestination(context.Background()).CreateDataDestinationRequest(createDataDestinationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateDataDestination``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDataDestination`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateDataDestination`: %v\n", resp)
 }
 ```
 
@@ -99,24 +98,24 @@ Create a DataSource in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest("DataSourceType_example", "Username_example", "Password_example", "SerialColumn_example", "PartitioningColumn_example", map[string]string{"key": "Inner_example"}) // CreateDataSourceRequest | 
+	createDataSourceRequest := *openapiclient.NewCreateDataSourceRequest("DataSourceType_example", map[string]string{"key": "Inner_example"}) // CreateDataSourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.CreateDataSource(context.Background()).CreateDataSourceRequest(createDataSourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateDataSource``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDataSource`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateDataSource`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.CreateDataSource(context.Background()).CreateDataSourceRequest(createDataSourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateDataSource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDataSource`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateDataSource`: %v\n", resp)
 }
 ```
 
@@ -165,24 +164,24 @@ Create a Filter in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    createFilterRequest := *openapiclient.NewCreateFilterRequest("FilterContents_example", "DataSourceId_example") // CreateFilterRequest | 
+	createFilterRequest := *openapiclient.NewCreateFilterRequest("FilterContents_example", "DataSourceId_example") // CreateFilterRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.CreateFilter(context.Background()).CreateFilterRequest(createFilterRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateFilter`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateFilter`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.CreateFilter(context.Background()).CreateFilterRequest(createFilterRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.CreateFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateFilter`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.CreateFilter`: %v\n", resp)
 }
 ```
 
@@ -231,24 +230,24 @@ Delete a DataDestination in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DeleteDataDestination(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteDataDestination``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteDataDestination`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteDataDestination`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DeleteDataDestination(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteDataDestination``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteDataDestination`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteDataDestination`: %v\n", resp)
 }
 ```
 
@@ -297,24 +296,24 @@ Delete a DataSource in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DeleteDataSource(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteDataSource``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteDataSource`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteDataSource`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DeleteDataSource(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteDataSource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteDataSource`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteDataSource`: %v\n", resp)
 }
 ```
 
@@ -363,24 +362,24 @@ Delete a Filter in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DeleteFilter(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteFilter`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteFilter`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DeleteFilter(context.Background()).DeleteResourceRequest(deleteResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DeleteFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteFilter`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DeleteFilter`: %v\n", resp)
 }
 ```
 
@@ -429,24 +428,24 @@ Describe a DataDestination in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
+	describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DescribeDataDestination(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeDataDestination``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DescribeDataDestination`: DataDestination
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeDataDestination`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DescribeDataDestination(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeDataDestination``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DescribeDataDestination`: DataDestination
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeDataDestination`: %v\n", resp)
 }
 ```
 
@@ -495,24 +494,24 @@ Describe a DataSource in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
+	describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DescribeDataSource(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeDataSource``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DescribeDataSource`: DataSource
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeDataSource`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DescribeDataSource(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeDataSource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DescribeDataSource`: DataSource
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeDataSource`: %v\n", resp)
 }
 ```
 
@@ -561,24 +560,24 @@ Describes a Filter in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
+	describeResourceRequest := *openapiclient.NewDescribeResourceRequest("ResourceId_example") // DescribeResourceRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.DescribeFilter(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DescribeFilter`: Filter
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeFilter`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.DescribeFilter(context.Background()).DescribeResourceRequest(describeResourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.DescribeFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DescribeFilter`: Filter
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.DescribeFilter`: %v\n", resp)
 }
 ```
 
@@ -627,24 +626,24 @@ List the Ambar resources in your Ambar environment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    listResourcesRequest := *openapiclient.NewListResourcesRequest() // ListResourcesRequest |  (optional)
+	listResourcesRequest := *openapiclient.NewListResourcesRequest() // ListResourcesRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.ListResources(context.Background()).ListResourcesRequest(listResourcesRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.ListResources``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListResources`: ListResourcesResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.ListResources`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.ListResources(context.Background()).ListResourcesRequest(listResourcesRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.ListResources``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListResources`: ListResourcesResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.ListResources`: %v\n", resp)
 }
 ```
 
@@ -693,24 +692,24 @@ Update the credentials associated with a DataDestination in your Ambar environme
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    updateResourceCredentialsRequest := *openapiclient.NewUpdateResourceCredentialsRequest("ResourceId_example", "Password_example", "Username_example") // UpdateResourceCredentialsRequest | 
+	updateResourceCredentialsRequest := *openapiclient.NewUpdateResourceCredentialsRequest("ResourceId_example", "Password_example", "Username_example") // UpdateResourceCredentialsRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.UpdateDataDestinationCredentials(context.Background()).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataDestinationCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateDataDestinationCredentials`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataDestinationCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.UpdateDataDestinationCredentials(context.Background()).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataDestinationCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDataDestinationCredentials`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataDestinationCredentials`: %v\n", resp)
 }
 ```
 
@@ -721,72 +720,6 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateDataDestinationCredentialsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **updateResourceCredentialsRequest** | [**UpdateResourceCredentialsRequest**](UpdateResourceCredentialsRequest.md) |  | 
-
-### Return type
-
-[**ResourceStateChangeResponse**](ResourceStateChangeResponse.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateDataSourceCredentials
-
-> ResourceStateChangeResponse UpdateDataSourceCredentials(ctx).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
-
-Update the credentials associated with a DataSource in your Ambar environment.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-    updateResourceCredentialsRequest := *openapiclient.NewUpdateResourceCredentialsRequest("ResourceId_example", "Password_example", "Username_example") // UpdateResourceCredentialsRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AmbarAPI.UpdateDataSourceCredentials(context.Background()).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataSourceCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateDataSourceCredentials`: ResourceStateChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataSourceCredentials`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateDataSourceCredentialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

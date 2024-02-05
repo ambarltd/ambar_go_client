@@ -14,20 +14,20 @@ For more information, please visit [https://ambar.cloud/developer/docs/help](htt
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import Ambar "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -37,17 +37,17 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `Ambar.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), Ambar.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `Ambar.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), Ambar.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -59,9 +59,9 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `Ambar.ContextOperationServerIndices` and `Ambar.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), Ambar.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -89,7 +89,6 @@ Class | Method | HTTP request | Description
 *AmbarAPI* | [**DescribeFilter**](docs/AmbarAPI.md#describefilter) | **Get** /filter | Describes a Filter in your Ambar environment.
 *AmbarAPI* | [**ListResources**](docs/AmbarAPI.md#listresources) | **Get** /resource | List the Ambar resources in your Ambar environment.
 *AmbarAPI* | [**UpdateDataDestinationCredentials**](docs/AmbarAPI.md#updatedatadestinationcredentials) | **Patch** /destination | Update the credentials associated with a DataDestination in your Ambar environment.
-*AmbarAPI* | [**UpdateDataSourceCredentials**](docs/AmbarAPI.md#updatedatasourcecredentials) | **Patch** /source | Update the credentials associated with a DataSource in your Ambar environment.
 
 
 ## Documentation For Models
@@ -132,11 +131,11 @@ Note, each API key must be added to a map of `map[string]APIKey` where the key i
 
 Example
 
-```golang
+```go
 auth := context.WithValue(
 		context.Background(),
-		sw.ContextAPIKeys,
-		map[string]sw.APIKey{
+		Ambar.ContextAPIKeys,
+		map[string]Ambar.APIKey{
 			"x-api-key": {Key: "API_KEY_STRING"},
 		},
 	)

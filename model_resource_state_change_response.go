@@ -13,6 +13,8 @@ package Ambar
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ResourceStateChangeResponse type satisfies the MappedNullable interface at compile time
@@ -21,17 +23,19 @@ var _ MappedNullable = &ResourceStateChangeResponse{}
 // ResourceStateChangeResponse struct for ResourceStateChangeResponse
 type ResourceStateChangeResponse struct {
 	ResourceId string `json:"resourceId"`
-	ResourceState string `json:"resourceState"`
+	State string `json:"state"`
 }
+
+type _ResourceStateChangeResponse ResourceStateChangeResponse
 
 // NewResourceStateChangeResponse instantiates a new ResourceStateChangeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceStateChangeResponse(resourceId string, resourceState string) *ResourceStateChangeResponse {
+func NewResourceStateChangeResponse(resourceId string, state string) *ResourceStateChangeResponse {
 	this := ResourceStateChangeResponse{}
 	this.ResourceId = resourceId
-	this.ResourceState = resourceState
+	this.State = state
 	return &this
 }
 
@@ -67,28 +71,28 @@ func (o *ResourceStateChangeResponse) SetResourceId(v string) {
 	o.ResourceId = v
 }
 
-// GetResourceState returns the ResourceState field value
-func (o *ResourceStateChangeResponse) GetResourceState() string {
+// GetState returns the State field value
+func (o *ResourceStateChangeResponse) GetState() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ResourceState
+	return o.State
 }
 
-// GetResourceStateOk returns a tuple with the ResourceState field value
+// GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *ResourceStateChangeResponse) GetResourceStateOk() (*string, bool) {
+func (o *ResourceStateChangeResponse) GetStateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ResourceState, true
+	return &o.State, true
 }
 
-// SetResourceState sets field value
-func (o *ResourceStateChangeResponse) SetResourceState(v string) {
-	o.ResourceState = v
+// SetState sets field value
+func (o *ResourceStateChangeResponse) SetState(v string) {
+	o.State = v
 }
 
 func (o ResourceStateChangeResponse) MarshalJSON() ([]byte, error) {
@@ -102,8 +106,46 @@ func (o ResourceStateChangeResponse) MarshalJSON() ([]byte, error) {
 func (o ResourceStateChangeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["resourceId"] = o.ResourceId
-	toSerialize["resourceState"] = o.ResourceState
+	toSerialize["state"] = o.State
 	return toSerialize, nil
+}
+
+func (o *ResourceStateChangeResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resourceId",
+		"state",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varResourceStateChangeResponse := _ResourceStateChangeResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varResourceStateChangeResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourceStateChangeResponse(varResourceStateChangeResponse)
+
+	return err
 }
 
 type NullableResourceStateChangeResponse struct {

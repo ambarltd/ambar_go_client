@@ -22,7 +22,7 @@ var _ MappedNullable = &ResourceDetails{}
 type ResourceDetails struct {
 	ResourceId *string `json:"resourceId,omitempty"`
 	Description *string `json:"description,omitempty"`
-	ResourceState *string `json:"resourceState,omitempty"`
+	State *string `json:"state,omitempty"`
 	CreatedAt *string `json:"createdAt,omitempty"`
 	LastUpdated *string `json:"lastUpdated,omitempty"`
 }
@@ -108,36 +108,36 @@ func (o *ResourceDetails) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetResourceState returns the ResourceState field value if set, zero value otherwise.
-func (o *ResourceDetails) GetResourceState() string {
-	if o == nil || IsNil(o.ResourceState) {
+// GetState returns the State field value if set, zero value otherwise.
+func (o *ResourceDetails) GetState() string {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-	return *o.ResourceState
+	return *o.State
 }
 
-// GetResourceStateOk returns a tuple with the ResourceState field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceDetails) GetResourceStateOk() (*string, bool) {
-	if o == nil || IsNil(o.ResourceState) {
+func (o *ResourceDetails) GetStateOk() (*string, bool) {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return o.ResourceState, true
+	return o.State, true
 }
 
-// HasResourceState returns a boolean if a field has been set.
-func (o *ResourceDetails) HasResourceState() bool {
-	if o != nil && !IsNil(o.ResourceState) {
+// HasState returns a boolean if a field has been set.
+func (o *ResourceDetails) HasState() bool {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceState gets a reference to the given string and assigns it to the ResourceState field.
-func (o *ResourceDetails) SetResourceState(v string) {
-	o.ResourceState = &v
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *ResourceDetails) SetState(v string) {
+	o.State = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -220,8 +220,8 @@ func (o ResourceDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.ResourceState) {
-		toSerialize["resourceState"] = o.ResourceState
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt

@@ -1,9 +1,9 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID
+module github.com/ambarltd/ambar_go_client
 
 go 1.18
 
 require (
-	github.com/ambarltd/ambar_go_client v0.0.0-20240122101839-da73b5df3b3a
+	github.com/ambarltd/ambar_go_client
 	github.com/stretchr/testify v1.8.4
 )
 

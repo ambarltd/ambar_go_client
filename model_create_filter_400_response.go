@@ -14,7 +14,6 @@ package Ambar
 import (
 	"encoding/json"
 	"fmt"
-	"bytes"
 )
 
 // CreateFilter400Response - struct for CreateFilter400Response

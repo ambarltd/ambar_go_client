@@ -14,7 +14,10 @@ Method | HTTP request | Description
 [**DescribeDataSource**](AmbarAPI.md#DescribeDataSource) | **Get** /source | Describe a DataSource in your Ambar environment.
 [**DescribeFilter**](AmbarAPI.md#DescribeFilter) | **Get** /filter | Describes a Filter in your Ambar environment.
 [**ListResources**](AmbarAPI.md#ListResources) | **Get** /resource | List the Ambar resources in your Ambar environment.
+[**UpdateDataDestination**](AmbarAPI.md#UpdateDataDestination) | **Put** /destination | Updates a DataDestination in your Ambar environment.
 [**UpdateDataDestinationCredentials**](AmbarAPI.md#UpdateDataDestinationCredentials) | **Patch** /destination | Update the credentials associated with a DataDestination in your Ambar environment.
+[**UpdateDataSource**](AmbarAPI.md#UpdateDataSource) | **Put** /source | Updates a DataSource in your Ambar environment.
+[**UpdateDataSourceCredentials**](AmbarAPI.md#UpdateDataSourceCredentials) | **Patch** /source | Update the credentials associated with a DataSource in your Ambar environment.
 
 
 
@@ -35,7 +38,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -101,7 +104,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -167,7 +170,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -233,11 +236,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("AMBAR-1fG45k7090") // DeleteResourceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -299,11 +302,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("AMBAR-1fG45k7090") // DeleteResourceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -365,11 +368,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("ResourceId_example") // DeleteResourceRequest | 
+	deleteResourceRequest := *openapiclient.NewDeleteResourceRequest("AMBAR-1fG45k7090") // DeleteResourceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -431,7 +434,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -497,7 +500,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -563,7 +566,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -629,7 +632,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -678,6 +681,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateDataDestination
+
+> ResourceStateChangeResponse UpdateDataDestination(ctx).UpdateDataDestinationRequest(updateDataDestinationRequest).Execute()
+
+Updates a DataDestination in your Ambar environment.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	updateDataDestinationRequest := *openapiclient.NewUpdateDataDestinationRequest("DestinationEndpoint_example", "ResourceId_example") // UpdateDataDestinationRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.UpdateDataDestination(context.Background()).UpdateDataDestinationRequest(updateDataDestinationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataDestination``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDataDestination`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataDestination`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDataDestinationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateDataDestinationRequest** | [**UpdateDataDestinationRequest**](UpdateDataDestinationRequest.md) |  | 
+
+### Return type
+
+[**ResourceStateChangeResponse**](ResourceStateChangeResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateDataDestinationCredentials
 
 > ResourceStateChangeResponse UpdateDataDestinationCredentials(ctx).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
@@ -695,7 +764,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ambarltd/ambar_go_client"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -720,6 +789,138 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateDataDestinationCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateResourceCredentialsRequest** | [**UpdateResourceCredentialsRequest**](UpdateResourceCredentialsRequest.md) |  | 
+
+### Return type
+
+[**ResourceStateChangeResponse**](ResourceStateChangeResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDataSource
+
+> ResourceStateChangeResponse UpdateDataSource(ctx).UpdateDataSourceRequest(updateDataSourceRequest).Execute()
+
+Updates a DataSource in your Ambar environment.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	updateDataSourceRequest := *openapiclient.NewUpdateDataSourceRequest("AMBAR-1fG45k7090") // UpdateDataSourceRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.UpdateDataSource(context.Background()).UpdateDataSourceRequest(updateDataSourceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataSource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDataSource`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataSource`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDataSourceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateDataSourceRequest** | [**UpdateDataSourceRequest**](UpdateDataSourceRequest.md) |  | 
+
+### Return type
+
+[**ResourceStateChangeResponse**](ResourceStateChangeResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDataSourceCredentials
+
+> ResourceStateChangeResponse UpdateDataSourceCredentials(ctx).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
+
+Update the credentials associated with a DataSource in your Ambar environment.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	updateResourceCredentialsRequest := *openapiclient.NewUpdateResourceCredentialsRequest("ResourceId_example", "Password_example", "Username_example") // UpdateResourceCredentialsRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AmbarAPI.UpdateDataSourceCredentials(context.Background()).UpdateResourceCredentialsRequest(updateResourceCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AmbarAPI.UpdateDataSourceCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateDataSourceCredentials`: ResourceStateChangeResponse
+	fmt.Fprintf(os.Stdout, "Response from `AmbarAPI.UpdateDataSourceCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDataSourceCredentialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

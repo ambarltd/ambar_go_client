@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | 
 **Description** | Pointer to **string** | A description for identifying this DataDestination. | [optional] 
-**FilterIds** | **[]string** | The Ambar ResourceId of a the filters in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
+**FilterIds** | **[]string** | The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
 **Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 **Username** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
 

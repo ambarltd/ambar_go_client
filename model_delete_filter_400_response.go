@@ -14,7 +14,6 @@ package Ambar
 import (
 	"encoding/json"
 	"fmt"
-	"bytes"
 )
 
 // DeleteFilter400Response - struct for DeleteFilter400Response

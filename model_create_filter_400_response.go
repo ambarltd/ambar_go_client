@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2023-12-01
+API version: 2024-04-25
 Contact: contact@ambar.cloud
 */
 
@@ -14,6 +14,7 @@ package Ambar
 import (
 	"encoding/json"
 	"fmt"
+	"bytes"
 )
 
 // CreateFilter400Response - struct for CreateFilter400Response

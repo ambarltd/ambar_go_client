@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | 
+**DestinationPort** | Pointer to **string** | The port on which your endpoint service is listening for connections. If not supplied then the HTTPS (443) port is used. | [optional] 
 **Description** | Pointer to **string** | A description for identifying this DataDestination. | [optional] 
 **FilterIds** | **[]string** | The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint. | 
 **Password** | **string** | A case sensitive string for the user Ambar should use to connect to your HTTP endpoint service. | 
@@ -48,6 +49,31 @@ and a boolean to check if the value has been set.
 
 SetDestinationEndpoint sets DestinationEndpoint field to given value.
 
+
+### GetDestinationPort
+
+`func (o *CreateDataDestinationRequest) GetDestinationPort() string`
+
+GetDestinationPort returns the DestinationPort field if non-nil, zero value otherwise.
+
+### GetDestinationPortOk
+
+`func (o *CreateDataDestinationRequest) GetDestinationPortOk() (*string, bool)`
+
+GetDestinationPortOk returns a tuple with the DestinationPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPort
+
+`func (o *CreateDataDestinationRequest) SetDestinationPort(v string)`
+
+SetDestinationPort sets DestinationPort field to given value.
+
+### HasDestinationPort
+
+`func (o *CreateDataDestinationRequest) HasDestinationPort() bool`
+
+HasDestinationPort returns a boolean if a field has been set.
 
 ### GetDescription
 

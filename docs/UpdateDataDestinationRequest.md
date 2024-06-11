@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DestinationEndpoint** | **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | 
+**DestinationEndpoint** | Pointer to **string** | The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication. | [optional] 
+**DestinationPort** | Pointer to **string** | The port on which your endpoint service is listening for connections. | [optional] 
 **ResourceId** | **string** | An Ambar resourceId. | 
 
 ## Methods
 
 ### NewUpdateDataDestinationRequest
 
-`func NewUpdateDataDestinationRequest(destinationEndpoint string, resourceId string, ) *UpdateDataDestinationRequest`
+`func NewUpdateDataDestinationRequest(resourceId string, ) *UpdateDataDestinationRequest`
 
 NewUpdateDataDestinationRequest instantiates a new UpdateDataDestinationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +46,36 @@ and a boolean to check if the value has been set.
 
 SetDestinationEndpoint sets DestinationEndpoint field to given value.
 
+### HasDestinationEndpoint
+
+`func (o *UpdateDataDestinationRequest) HasDestinationEndpoint() bool`
+
+HasDestinationEndpoint returns a boolean if a field has been set.
+
+### GetDestinationPort
+
+`func (o *UpdateDataDestinationRequest) GetDestinationPort() string`
+
+GetDestinationPort returns the DestinationPort field if non-nil, zero value otherwise.
+
+### GetDestinationPortOk
+
+`func (o *UpdateDataDestinationRequest) GetDestinationPortOk() (*string, bool)`
+
+GetDestinationPortOk returns a tuple with the DestinationPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPort
+
+`func (o *UpdateDataDestinationRequest) SetDestinationPort(v string)`
+
+SetDestinationPort sets DestinationPort field to given value.
+
+### HasDestinationPort
+
+`func (o *UpdateDataDestinationRequest) HasDestinationPort() bool`
+
+HasDestinationPort returns a boolean if a field has been set.
 
 ### GetResourceId
 

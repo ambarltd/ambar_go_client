@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **string** | The UTC time at which the DataDestination was created. | 
 **DestinationEndpoint** | **string** | The HTTP endpoint which Ambar sends filtered record sequences to. | 
+**DestinationPort** | **string** | The port on which your endpoint service is listening for connections. | 
 **Description** | Pointer to **string** | The description of the DataDestination given when it was created. | [optional] 
 **FilterIds** | **[]string** | The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this DataDestination. | 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewDataDestination
 
-`func NewDataDestination(createdAt string, destinationEndpoint string, filterIds []string, resourceId string, state string, ) *DataDestination`
+`func NewDataDestination(createdAt string, destinationEndpoint string, destinationPort string, filterIds []string, resourceId string, state string, ) *DataDestination`
 
 NewDataDestination instantiates a new DataDestination object
 This constructor will assign default values to properties that have it defined,
@@ -68,6 +69,26 @@ and a boolean to check if the value has been set.
 `func (o *DataDestination) SetDestinationEndpoint(v string)`
 
 SetDestinationEndpoint sets DestinationEndpoint field to given value.
+
+
+### GetDestinationPort
+
+`func (o *DataDestination) GetDestinationPort() string`
+
+GetDestinationPort returns the DestinationPort field if non-nil, zero value otherwise.
+
+### GetDestinationPortOk
+
+`func (o *DataDestination) GetDestinationPortOk() (*string, bool)`
+
+GetDestinationPortOk returns a tuple with the DestinationPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationPort
+
+`func (o *DataDestination) SetDestinationPort(v string)`
+
+SetDestinationPort sets DestinationPort field to given value.
 
 
 ### GetDescription

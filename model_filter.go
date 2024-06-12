@@ -32,6 +32,8 @@ type Filter struct {
 	ResourceId string `json:"resourceId"`
 	// The description of the Filter given when it was created.
 	Description *string `json:"description,omitempty"`
+	// The contents of the Filter in Ambar filter DSL.
+	FilterContents string `json:"filterContents"`
 	// The ResourceState of this Filter. For possible values see ResourceState in our developer docs.
 	State string `json:"state"`
 }
@@ -42,12 +44,13 @@ type _Filter Filter
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, state string) *Filter {
+func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, filterContents string, state string) *Filter {
 	this := Filter{}
 	this.CreatedAt = createdAt
 	this.DataDestinationsUsingFilter = dataDestinationsUsingFilter
 	this.DataSourceId = dataSourceId
 	this.ResourceId = resourceId
+	this.FilterContents = filterContents
 	this.State = state
 	return &this
 }
@@ -188,6 +191,30 @@ func (o *Filter) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetFilterContents returns the FilterContents field value
+func (o *Filter) GetFilterContents() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FilterContents
+}
+
+// GetFilterContentsOk returns a tuple with the FilterContents field value
+// and a boolean to check if the value has been set.
+func (o *Filter) GetFilterContentsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FilterContents, true
+}
+
+// SetFilterContents sets field value
+func (o *Filter) SetFilterContents(v string) {
+	o.FilterContents = v
+}
+
 // GetState returns the State field value
 func (o *Filter) GetState() string {
 	if o == nil {
@@ -229,6 +256,7 @@ func (o Filter) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	toSerialize["filterContents"] = o.FilterContents
 	toSerialize["state"] = o.State
 	return toSerialize, nil
 }
@@ -242,6 +270,7 @@ func (o *Filter) UnmarshalJSON(data []byte) (err error) {
 		"dataDestinationsUsingFilter",
 		"dataSourceId",
 		"resourceId",
+		"filterContents",
 		"state",
 	}
 

@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2024-06-11
+API version: 2024-04-25
 Contact: contact@ambar.cloud
 */
 
@@ -24,8 +24,6 @@ var _ MappedNullable = &CreateDataDestinationRequest{}
 type CreateDataDestinationRequest struct {
 	// The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication.
 	DestinationEndpoint string `json:"destinationEndpoint"`
-	// The port on which your endpoint service is listening for connections. If not supplied then the HTTPS (443) port is used.
-	DestinationPort *string `json:"destinationPort,omitempty"`
 	// A description for identifying this DataDestination.
 	Description *string `json:"description,omitempty"`
 	// The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
@@ -81,38 +79,6 @@ func (o *CreateDataDestinationRequest) GetDestinationEndpointOk() (*string, bool
 // SetDestinationEndpoint sets field value
 func (o *CreateDataDestinationRequest) SetDestinationEndpoint(v string) {
 	o.DestinationEndpoint = v
-}
-
-// GetDestinationPort returns the DestinationPort field value if set, zero value otherwise.
-func (o *CreateDataDestinationRequest) GetDestinationPort() string {
-	if o == nil || IsNil(o.DestinationPort) {
-		var ret string
-		return ret
-	}
-	return *o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateDataDestinationRequest) GetDestinationPortOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationPort) {
-		return nil, false
-	}
-	return o.DestinationPort, true
-}
-
-// HasDestinationPort returns a boolean if a field has been set.
-func (o *CreateDataDestinationRequest) HasDestinationPort() bool {
-	if o != nil && !IsNil(o.DestinationPort) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestinationPort gets a reference to the given string and assigns it to the DestinationPort field.
-func (o *CreateDataDestinationRequest) SetDestinationPort(v string) {
-	o.DestinationPort = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -230,9 +196,6 @@ func (o CreateDataDestinationRequest) MarshalJSON() ([]byte, error) {
 func (o CreateDataDestinationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["destinationEndpoint"] = o.DestinationEndpoint
-	if !IsNil(o.DestinationPort) {
-		toSerialize["destinationPort"] = o.DestinationPort
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

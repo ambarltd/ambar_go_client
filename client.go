@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2024-06-11
+API version: 2024-04-25
 Contact: contact@ambar.cloud
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Ambar OpenAPI Specification API v2024-06-11
+// APIClient manages communication with the Ambar OpenAPI Specification API v2024-04-25
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

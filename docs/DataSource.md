@@ -10,13 +10,12 @@ Name | Type | Description | Notes
 **ResourceId** | **string** | The Ambar resourceId corresponding to this DataSource. | 
 **State** | **string** | The ResourceState of this DataSource. For possible values see ResourceState in our developer docs. | 
 **Description** | Pointer to **string** | A user friendly description of this DataSource. | [optional] 
-**FilterIds** | **[]string** | The Ambar ResourceIds of filters which refer to this DataSource. | 
 
 ## Methods
 
 ### NewDataSource
 
-`func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string, filterIds []string, ) *DataSource`
+`func NewDataSource(createdAt string, dataSourceConfig map[string]interface{}, dataSourceType string, resourceId string, state string, ) *DataSource`
 
 NewDataSource instantiates a new DataSource object
 This constructor will assign default values to properties that have it defined,
@@ -155,26 +154,6 @@ SetDescription sets Description field to given value.
 `func (o *DataSource) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetFilterIds
-
-`func (o *DataSource) GetFilterIds() []string`
-
-GetFilterIds returns the FilterIds field if non-nil, zero value otherwise.
-
-### GetFilterIdsOk
-
-`func (o *DataSource) GetFilterIdsOk() (*[]string, bool)`
-
-GetFilterIdsOk returns a tuple with the FilterIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilterIds
-
-`func (o *DataSource) SetFilterIds(v []string)`
-
-SetFilterIds sets FilterIds field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

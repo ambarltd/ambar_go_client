@@ -9,14 +9,13 @@ Name | Type | Description | Notes
 **DataSourceId** | **string** | The DataSource ResourceId which this Filter will read from. | 
 **ResourceId** | **string** | The Ambar resourceId corresponding to this Filter. | 
 **Description** | Pointer to **string** | The description of the Filter given when it was created. | [optional] 
-**FilterContents** | **string** | The contents of the Filter in Ambar filter DSL. | 
 **State** | **string** | The ResourceState of this Filter. For possible values see ResourceState in our developer docs. | 
 
 ## Methods
 
 ### NewFilter
 
-`func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, filterContents string, state string, ) *Filter`
+`func NewFilter(createdAt string, dataDestinationsUsingFilter []string, dataSourceId string, resourceId string, state string, ) *Filter`
 
 NewFilter instantiates a new Filter object
 This constructor will assign default values to properties that have it defined,
@@ -135,26 +134,6 @@ SetDescription sets Description field to given value.
 `func (o *Filter) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetFilterContents
-
-`func (o *Filter) GetFilterContents() string`
-
-GetFilterContents returns the FilterContents field if non-nil, zero value otherwise.
-
-### GetFilterContentsOk
-
-`func (o *Filter) GetFilterContentsOk() (*string, bool)`
-
-GetFilterContentsOk returns a tuple with the FilterContents field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilterContents
-
-`func (o *Filter) SetFilterContents(v string)`
-
-SetFilterContents sets FilterContents field to given value.
-
 
 ### GetState
 

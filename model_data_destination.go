@@ -26,8 +26,6 @@ type DataDestination struct {
 	CreatedAt string `json:"createdAt"`
 	// The HTTP endpoint which Ambar sends filtered record sequences to.
 	DestinationEndpoint string `json:"destinationEndpoint"`
-	// The port on which your endpoint service is listening for connections.
-	DestinationPort string `json:"destinationPort"`
 	// The description of the DataDestination given when it was created.
 	Description *string `json:"description,omitempty"`
 	// The Ambar resourceId for the Filters which are applied to record sequences sent to the configured DataDestination.
@@ -44,11 +42,10 @@ type _DataDestination DataDestination
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataDestination(createdAt string, destinationEndpoint string, destinationPort string, filterIds []string, resourceId string, state string) *DataDestination {
+func NewDataDestination(createdAt string, destinationEndpoint string, filterIds []string, resourceId string, state string) *DataDestination {
 	this := DataDestination{}
 	this.CreatedAt = createdAt
 	this.DestinationEndpoint = destinationEndpoint
-	this.DestinationPort = destinationPort
 	this.FilterIds = filterIds
 	this.ResourceId = resourceId
 	this.State = state
@@ -109,30 +106,6 @@ func (o *DataDestination) GetDestinationEndpointOk() (*string, bool) {
 // SetDestinationEndpoint sets field value
 func (o *DataDestination) SetDestinationEndpoint(v string) {
 	o.DestinationEndpoint = v
-}
-
-// GetDestinationPort returns the DestinationPort field value
-func (o *DataDestination) GetDestinationPort() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DestinationPort
-}
-
-// GetDestinationPortOk returns a tuple with the DestinationPort field value
-// and a boolean to check if the value has been set.
-func (o *DataDestination) GetDestinationPortOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DestinationPort, true
-}
-
-// SetDestinationPort sets field value
-func (o *DataDestination) SetDestinationPort(v string) {
-	o.DestinationPort = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -251,7 +224,6 @@ func (o DataDestination) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["destinationEndpoint"] = o.DestinationEndpoint
-	toSerialize["destinationPort"] = o.DestinationPort
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -268,7 +240,6 @@ func (o *DataDestination) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"createdAt",
 		"destinationEndpoint",
-		"destinationPort",
 		"filterIds",
 		"resourceId",
 		"state",

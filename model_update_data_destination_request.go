@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2024-06-11
+API version: 2025-04-02
 Contact: contact@ambar.cloud
 */
 
@@ -22,8 +22,10 @@ var _ MappedNullable = &UpdateDataDestinationRequest{}
 
 // UpdateDataDestinationRequest The resource properties to update on the Ambar Data Destination.
 type UpdateDataDestinationRequest struct {
+	// The Ambar ResourceId of a the filter in your environment to use to determine what data sources to pull records from and how to filter record sequences before delivery to your endpoint.
+	FilterIds []string `json:"filterIds,omitempty"`
 	// The HTTP endpoint which Ambar will deliver messages too. The endpoint should accept a username and password credential pair for authentication.
-	DestinationEndpoint string `json:"destinationEndpoint"`
+	DestinationEndpoint *string `json:"destinationEndpoint,omitempty"`
 	// An Ambar resourceId.
 	ResourceId string `json:"resourceId"`
 }
@@ -34,9 +36,8 @@ type _UpdateDataDestinationRequest UpdateDataDestinationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateDataDestinationRequest(destinationEndpoint string, resourceId string) *UpdateDataDestinationRequest {
+func NewUpdateDataDestinationRequest(resourceId string) *UpdateDataDestinationRequest {
 	this := UpdateDataDestinationRequest{}
-	this.DestinationEndpoint = destinationEndpoint
 	this.ResourceId = resourceId
 	return &this
 }
@@ -49,28 +50,68 @@ func NewUpdateDataDestinationRequestWithDefaults() *UpdateDataDestinationRequest
 	return &this
 }
 
-// GetDestinationEndpoint returns the DestinationEndpoint field value
+// GetFilterIds returns the FilterIds field value if set, zero value otherwise.
+func (o *UpdateDataDestinationRequest) GetFilterIds() []string {
+	if o == nil || IsNil(o.FilterIds) {
+		var ret []string
+		return ret
+	}
+	return o.FilterIds
+}
+
+// GetFilterIdsOk returns a tuple with the FilterIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDataDestinationRequest) GetFilterIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.FilterIds) {
+		return nil, false
+	}
+	return o.FilterIds, true
+}
+
+// HasFilterIds returns a boolean if a field has been set.
+func (o *UpdateDataDestinationRequest) HasFilterIds() bool {
+	if o != nil && !IsNil(o.FilterIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterIds gets a reference to the given []string and assigns it to the FilterIds field.
+func (o *UpdateDataDestinationRequest) SetFilterIds(v []string) {
+	o.FilterIds = v
+}
+
+// GetDestinationEndpoint returns the DestinationEndpoint field value if set, zero value otherwise.
 func (o *UpdateDataDestinationRequest) GetDestinationEndpoint() string {
-	if o == nil {
+	if o == nil || IsNil(o.DestinationEndpoint) {
 		var ret string
 		return ret
 	}
-
-	return o.DestinationEndpoint
+	return *o.DestinationEndpoint
 }
 
-// GetDestinationEndpointOk returns a tuple with the DestinationEndpoint field value
+// GetDestinationEndpointOk returns a tuple with the DestinationEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateDataDestinationRequest) GetDestinationEndpointOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DestinationEndpoint) {
 		return nil, false
 	}
-	return &o.DestinationEndpoint, true
+	return o.DestinationEndpoint, true
 }
 
-// SetDestinationEndpoint sets field value
+// HasDestinationEndpoint returns a boolean if a field has been set.
+func (o *UpdateDataDestinationRequest) HasDestinationEndpoint() bool {
+	if o != nil && !IsNil(o.DestinationEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationEndpoint gets a reference to the given string and assigns it to the DestinationEndpoint field.
 func (o *UpdateDataDestinationRequest) SetDestinationEndpoint(v string) {
-	o.DestinationEndpoint = v
+	o.DestinationEndpoint = &v
 }
 
 // GetResourceId returns the ResourceId field value
@@ -107,7 +148,12 @@ func (o UpdateDataDestinationRequest) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDataDestinationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["destinationEndpoint"] = o.DestinationEndpoint
+	if !IsNil(o.FilterIds) {
+		toSerialize["filterIds"] = o.FilterIds
+	}
+	if !IsNil(o.DestinationEndpoint) {
+		toSerialize["destinationEndpoint"] = o.DestinationEndpoint
+	}
 	toSerialize["resourceId"] = o.ResourceId
 	return toSerialize, nil
 }
@@ -117,7 +163,6 @@ func (o *UpdateDataDestinationRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"destinationEndpoint",
 		"resourceId",
 	}
 

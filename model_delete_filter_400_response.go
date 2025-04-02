@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2024-06-11
+API version: 2025-04-02
 Contact: contact@ambar.cloud
 */
 
@@ -14,6 +14,7 @@ package Ambar
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // DeleteFilter400Response - struct for DeleteFilter400Response
@@ -48,7 +49,11 @@ func (dst *DeleteFilter400Response) UnmarshalJSON(data []byte) error {
 		if string(jsonInvalidParameterException) == "{}" { // empty struct
 			dst.InvalidParameterException = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.InvalidParameterException); err != nil {
+				dst.InvalidParameterException = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.InvalidParameterException = nil
@@ -61,7 +66,11 @@ func (dst *DeleteFilter400Response) UnmarshalJSON(data []byte) error {
 		if string(jsonResourceInvalidStateException) == "{}" { // empty struct
 			dst.ResourceInvalidStateException = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ResourceInvalidStateException); err != nil {
+				dst.ResourceInvalidStateException = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ResourceInvalidStateException = nil
@@ -104,6 +113,20 @@ func (obj *DeleteFilter400Response) GetActualInstance() (interface{}) {
 
 	if obj.ResourceInvalidStateException != nil {
 		return obj.ResourceInvalidStateException
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj DeleteFilter400Response) GetActualInstanceValue() (interface{}) {
+	if obj.InvalidParameterException != nil {
+		return *obj.InvalidParameterException
+	}
+
+	if obj.ResourceInvalidStateException != nil {
+		return *obj.ResourceInvalidStateException
 	}
 
 	// all schemas are nil

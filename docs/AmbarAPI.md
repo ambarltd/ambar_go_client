@@ -702,7 +702,7 @@ import (
 )
 
 func main() {
-	updateDataDestinationRequest := *openapiclient.NewUpdateDataDestinationRequest("DestinationEndpoint_example", "ResourceId_example") // UpdateDataDestinationRequest | 
+	updateDataDestinationRequest := *openapiclient.NewUpdateDataDestinationRequest("ResourceId_example") // UpdateDataDestinationRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

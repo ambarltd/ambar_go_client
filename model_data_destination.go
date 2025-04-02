@@ -3,7 +3,7 @@ Ambar OpenAPI Specification
 
 Details about communicating with Ambar.cloud public endpoints. Supported HTTP rest endpoints and their  request and response details.
 
-API version: 2024-06-11
+API version: 2025-04-02
 Contact: contact@ambar.cloud
 */
 
